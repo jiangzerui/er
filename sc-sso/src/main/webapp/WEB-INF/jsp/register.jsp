@@ -35,32 +35,37 @@
                         	<div class="form-top">
                         		<div class="form-top-left">
                         			<h3>注册</h3>
+                        			<p class="error">${error_msg}</p>
                         		</div>
                         		<div class="form-top-right">
                         			<i class="fa fa-key"></i>
                         		</div>
                             </div>
                             <div class="form-bottom">
-			                    <form role="form" action="toLogin.html" method="post" class="login-form">
+			                    <form role="form" action="regist.html" method="post" class="login-form">
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">Username</label>
-			                        	<input type="text" name="form-username" placeholder="Loginname" class="form-username form-control" id="form-username">
+			                        	<input type="text" name="loginName" placeholder="登录账号" class="form-username form-control" id="username">
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-password">Password</label>
-			                        	<input type="password" name="form-password" placeholder="Password" class="form-password form-control" id="form-password">
+			                        	<input type="password" name="password" placeholder="登录密码" class="form-password form-control" id="password">
 			                        </div>
 			                        <div class="form-group">
-			                    		<label class="sr-only" for="form-username">Username</label>
-			                        	<input type="text" name="form-username" placeholder="Repeat Password" class="form-username form-control" id="form-username">
+			                    		<label class="sr-only" for="form-username">Repeat Password</label>
+			                        	<input type="password" name="repassword" placeholder="重复密码" class="form-password form-control" id="repassword">
 			                        </div>
 			                        <div class="form-group">
-			                    		<label class="sr-only" for="form-username">Username</label>
-			                        	<input type="text" name="form-username" placeholder="email" class="form-username form-control" id="form-username">
+			                    		<label class="sr-only" for="form-username">Nickname</label>
+			                        	<input type="text" name="name" placeholder="昵称" class="form-username form-control" id="nickname">
 			                        </div>
 			                        <div class="form-group">
-			                    		<label class="sr-only" for="form-username">Username</label>
-			                        	<input type="text" name="form-username" placeholder="Username" class="form-username form-control" id="form-username">
+			                    		<label class="sr-only" for="form-username">email</label>
+			                        	<input type="email" name="email" placeholder="邮箱" class="form-username form-control" id="email">
+			                        </div>
+			                        <div class="form-group">
+			                    		<label class="sr-only" for="form-username">id</label>
+			                        	<input type="text" name="id" placeholder="身份证号" class="form-username form-control" id="id">
 			                        </div>
 			                        <button type="submit" class="btn">注册</button>
 			                    </form>

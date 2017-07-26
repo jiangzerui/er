@@ -14,6 +14,8 @@ public class User {
     private String name;
 
     private String id;
+    
+    private String roleCode;
 
     public Integer getUserId() {
         return userId;
@@ -70,4 +72,14 @@ public class User {
     public void setId(String id) {
         this.id = id == null ? null : id.trim();
     }
+
+	public String getRoleCode() {
+		return roleCode;
+	}
+
+	public void setRoleCode(String roleCode) {
+		this.roleCode = roleCode;
+	}
+    
+    
 }

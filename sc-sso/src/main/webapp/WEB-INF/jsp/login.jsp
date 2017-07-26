@@ -35,29 +35,26 @@
                         	<div class="form-top">
                         		<div class="form-top-left">
                         			<h3>登录</h3>
+                        			<p class="error">${error_msg}</p>
                         		</div>
-                        		<div class="form-top-right">
+                        		<div class="form-top-right">	
                         			<i class="fa fa-key"></i>
                         		</div>
                             </div>
                             <div class="form-bottom">
-			                    <form role="form" action="" method="post" class="login-form">
+			                    <form role="form" action="login.html" method="post" class="login-form">
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">Username</label>
-			                        	<input type="text" name="form-username" placeholder="Username" class="form-username form-control" id="form-username">
+			                        	<input type="text" name="loginname" placeholder="登录账号" class="form-username form-control" id="form-username">
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-password">Password</label>
-			                        	<input type="password" name="form-password" placeholder="Password" class="form-password form-control" id="form-password">
+			                        	<input type="password" name="password" placeholder="登录密码" class="form-password form-control" id="form-password">
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-password">Password</label>
-			                        	<select name="form-select-role" placeholder="Password" class="form-password form-control" id="form-password">
-			                        		<option value="">--请选择角色--</option>
-			                        		<option value="">--请选择角色--</option>
-			                        		<option value="">--请选择角色--</option>
-			                        		<option value="">--请选择角色--</option>
-			                        		<option value="">--请选择角色--</option>
+			                        	<select name="roleCode" placeholder="Password" class="form-password form-control" id="form-role">
+			                        		<option value="0">--请选择角色--</option>
 			                        	</select>
 			                        </div>
 			                        <button type="submit" class="btn">登录</button>
@@ -76,7 +73,26 @@
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="assets/js/jquery.backstretch.min.js"></script>
         <script src="assets/js/scripts.js"></script>
-
+		<script type="text/javascript">
+		$(function(){
+			$("#form-username").blur(function(){
+				var val = $("#form-username").val();
+				var url = "getUserRole.html";
+				$.post(url, {loginname:val}, function(data){
+					var roles = data.data;
+					if(roles.length == 0){
+						alert("请检查用户名，该用户不包含任何角色");
+						return;
+					}
+					$("#form-role").html("");
+					$("#form-role").append("<option value='0'>--请选择角色--</option>");
+					$.each(roles, function(i, n){
+						$("#form-role").append("<option value='"+n.roleCode+"'>"+n.roleName+"</option>");
+					});
+				}, "json");
+			});
+		});
+		</script>
     </body>
 
 </html>

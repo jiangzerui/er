@@ -3,8 +3,13 @@
 <mapper namespace="com.sc.mapper.UserRoleMapper">
   <resultMap id="BaseResultMap" type="com.sc.pojo.UserRole">
     <id column="user_role_id" jdbcType="INTEGER" property="userRoleId" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="user_code" jdbcType="VARCHAR" property="userCode" />
+    <result column="role_code" jdbcType="VARCHAR" property="roleCode" />
+  </resultMap>
+  <resultMap id="RoleBaseResultMap" type="com.sc.pojo.Role">
+    <id column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="role_code" jdbcType="VARCHAR" property="roleCode" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,8 +70,17 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    user_role_id, user_id, role_id
+    user_role_id, user_code, role_code
   </sql>
+  
+  <select id="selectRolesByUserCode" parameterType="java.lang.String" resultMap="RoleBaseResultMap">
+  	select 
+  		r.role_id role_id,
+  		r.role_name role_name,
+  		r.role_code role_code
+  	from user_role ur join role r on ur.role_code = r.role_code
+  	where ur.user_code=#{userCode}
+  </select>
   <select id="selectByExample" parameterType="com.sc.pojo.UserRoleExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -98,9 +112,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.sc.pojo.UserRole">
-    insert into user_role (user_role_id, user_id, role_id
+    insert into user_role (user_role_id, user_code, role_code
       )
-    values (#{userRoleId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}
+    values (#{userRoleId,jdbcType=INTEGER}, #{userCode,jdbcType=VARCHAR}, #{roleCode,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.sc.pojo.UserRole">
@@ -109,22 +123,22 @@
       <if test="userRoleId != null">
         user_role_id,
       </if>
-      <if test="userId != null">
-        user_id,
+      <if test="userCode != null">
+        user_code,
       </if>
-      <if test="roleId != null">
-        role_id,
+      <if test="roleCode != null">
+        role_code,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userRoleId != null">
         #{userRoleId,jdbcType=INTEGER},
       </if>
-      <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
+      <if test="userCode != null">
+        #{userCode,jdbcType=VARCHAR},
       </if>
-      <if test="roleId != null">
-        #{roleId,jdbcType=INTEGER},
+      <if test="roleCode != null">
+        #{roleCode,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -140,11 +154,11 @@
       <if test="record.userRoleId != null">
         user_role_id = #{record.userRoleId,jdbcType=INTEGER},
       </if>
-      <if test="record.userId != null">
-        user_id = #{record.userId,jdbcType=INTEGER},
+      <if test="record.userCode != null">
+        user_code = #{record.userCode,jdbcType=VARCHAR},
       </if>
-      <if test="record.roleId != null">
-        role_id = #{record.roleId,jdbcType=INTEGER},
+      <if test="record.roleCode != null">
+        role_code = #{record.roleCode,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -154,8 +168,8 @@
   <update id="updateByExample" parameterType="map">
     update user_role
     set user_role_id = #{record.userRoleId,jdbcType=INTEGER},
-      user_id = #{record.userId,jdbcType=INTEGER},
-      role_id = #{record.roleId,jdbcType=INTEGER}
+      user_code = #{record.userCode,jdbcType=VARCHAR},
+      role_code = #{record.roleCode,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -163,19 +177,19 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.sc.pojo.UserRole">
     update user_role
     <set>
-      <if test="userId != null">
-        user_id = #{userId,jdbcType=INTEGER},
+      <if test="userCode != null">
+        user_code = #{userCode,jdbcType=VARCHAR},
       </if>
-      <if test="roleId != null">
-        role_id = #{roleId,jdbcType=INTEGER},
+      <if test="roleCode != null">
+        role_code = #{roleCode,jdbcType=VARCHAR},
       </if>
     </set>
     where user_role_id = #{userRoleId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sc.pojo.UserRole">
     update user_role
-    set user_id = #{userId,jdbcType=INTEGER},
-      role_id = #{roleId,jdbcType=INTEGER}
+    set user_code = #{userCode,jdbcType=VARCHAR},
+      role_code = #{roleCode,jdbcType=VARCHAR}
     where user_role_id = #{userRoleId,jdbcType=INTEGER}
   </update>
 </mapper>

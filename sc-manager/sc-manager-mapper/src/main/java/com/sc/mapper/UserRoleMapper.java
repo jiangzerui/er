@@ -1,5 +1,6 @@
 package com.sc.mapper;
 
+import com.sc.pojo.Role;
 import com.sc.pojo.UserRole;
 import com.sc.pojo.UserRoleExample;
 import java.util.List;
@@ -27,4 +28,6 @@ public interface UserRoleMapper {
     int updateByPrimaryKeySelective(UserRole record);
 
     int updateByPrimaryKey(UserRole record);
+    
+    List<Role> selectRolesByUserCode(String userCode);
 }

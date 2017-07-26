@@ -3,9 +3,9 @@ package com.sc.pojo;
 public class UserRole {
     private Integer userRoleId;
 
-    private Integer userId;
+    private String userCode;
 
-    private Integer roleId;
+    private String roleCode;
 
     public Integer getUserRoleId() {
         return userRoleId;
@@ -15,19 +15,19 @@ public class UserRole {
         this.userRoleId = userRoleId;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public String getUserCode() {
+        return userCode;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUserCode(String userCode) {
+        this.userCode = userCode == null ? null : userCode.trim();
     }
 
-    public Integer getRoleId() {
-        return roleId;
+    public String getRoleCode() {
+        return roleCode;
     }
 
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
+    public void setRoleCode(String roleCode) {
+        this.roleCode = roleCode == null ? null : roleCode.trim();
     }
 }
