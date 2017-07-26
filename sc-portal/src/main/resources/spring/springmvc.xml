@@ -55,10 +55,8 @@
 	-->
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/order/**" />
-			<mvc:mapping path="/cart/**" />
-			<mvc:mapping path="/collect/**" />
-			<bean class="com.ajiatech.interceptor.MyInterceptor" />
+			<mvc:mapping path="/portal/**" />
+			<bean class="com.sc.interceptor.CheckUserInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 

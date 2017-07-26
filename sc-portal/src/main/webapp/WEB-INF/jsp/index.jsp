@@ -1,224 +1,114 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>阿甲商城学子首页</title>
-    <link href="${pageContext.request.contextPath}/css/index.css" rel="Stylesheet"/>
-    <link href="${pageContext.request.contextPath}/css/animate.css" rel="Stylesheet"/>
-    <link href="${pageContext.request.contextPath}/css/slide.css" rel="Stylesheet"/>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <![endif]-->
+    <title>双创平台</title>
+    <!-- BOOTSTRAP CORE STYLE CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONTAWESOME STYLE CSS -->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE CSS -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <!-- GOOGLE FONT CSS -->
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css' />
+	<script src="assets/js/jquery-1.11.1.js"></script>
+	<!-- CUSTOM SCRIPTS  -->
+	<script src="assets/js/custom.js"></script>
+
 </head>
 <body>
-<!-- 页面顶部-->
-<jsp:include page="commons/header.jsp"></jsp:include>
-<!-- banner部分-->
-<div class="ck-slide">
-    <ul class="ck-slide-wrapper">
-        <li>
-            <a href="/toItemInfo/10000028.html"><img src="http://139.129.241.42/images/portal/index/index_banner1.png" alt=""></a>
-        </li>
-        <li style="display:none">
-            <a href="/toItemInfo/100000021.html"><img src="http://139.129.241.42/images/portal/index/index_banner2.png" alt=""></a>
-        </li>
-        <li style="display:none">
-            <a href="/lookforward.html"><img src="http://139.129.241.42/images/portal/index/index_banner3.png" alt=""></a>
-        </li>
-        <li style="display:none">
-            <a href="/toItemInfo/10000019.html"><img src="http://139.129.241.42/images/portal/index/index_banner4.png" alt=""></a>
-        </li>
-        <li style="display:none">
-            <a href="/lookforward.html"><img src="http://139.129.241.42/images/portal/index/index_banner5.png" alt=""></a>
-        </li>
-    </ul>
-    <a href="javascript:;" class="ctrl-slide ck-prev">上一张</a> <a href="javascript:;" class="ctrl-slide ck-next">下一张</a>
-    <div class="ck-slidebox">
-        <div class="slideWrap">
-            <ul class="dot-wrap">
-                <li class="current"><em>1</em></li>
-                <li><em>2</em></li>
-                <li><em>3</em></li>
-                <li><em>4</em></li>
-                <li><em>5</em></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<!-- 特推部分-->
-<div id="product">
-    <div class="product_1 lf">
-        <div class="aside lf">
-        	<a href="/toItemInfo/100000422.html">
-            <img id="aside_image" src="http://139.129.241.42/images/portal/index/index_Sbanner_img1.png" alt=""/>
-            </a>
-        </div>
-        <div class="text rt">
-            <p class="ys1">ThinkPad<b class="ys2">s1</b></p>
-            <p class="ys3">设计师独享高端配置</p>
-        </div>
-    </div>
-    <div class="product_2 lf">
-        <div class="aside lf">
-        	<a href="/toItemInfo/10000043.html">
-           		 <img id="aside_image2" src="http://139.129.241.42/images/portal/index/index_Sbanner_img2.png" alt=""/>
-            </a>
-        </div>
-        <div class="text rt">
-            <p class="ys1 ys4">乐尚书包<b class="ys2 ys4">Bag</b></p>
-            <p class="ys3 ys4">给你满载而归的喜悦</p>
-        </div>
-    </div>
-    <div class="product_3 lf">
-        <div class="aside lf">
-        	<a href="/lookforward.html">
-	            <img id="aside_image3" src="http://139.129.241.42/images/portal/index/index_Sbanner_img3.png" alt=""/>
-        	</a>
-        </div>
-        <div class="text rt">
-            <p class="ys1">刀鱼焖排骨</p>
-            <p class="ys3">吃饱了才有力气学习</p>
-        </div>
-    </div>
-</div>
-<!-- welcome部分-->
-<div id="welcome">
-    <a href="/lookforward.html">阅读更多>></a>
-</div>
-<!-- 学习用品-->
-<div id="study">
-    <p>学习用品<span>爱学习 享品质工作</span></p>
-    <div class="study_left lf">
-        <div id="product_parameters_main">
-            <p>
-            	<img src="http://139.129.241.42/images/portal/index/wenan.png" alt=""/>
-           	</p>
-            <h3 id="product_name_main">联想(Lenovo) 小新Air13 pro版</h3>
-            <h3 id="product_preferential_main">限时特惠<b id="product_price_main">￥6688.00</b></h3>
-            <p class="view_details"><a href="">查看详情</a></p>
-        </div>
-        <a href="/toItemInfo/10000037.html">
-        <img id="study_product_main" src="http://139.129.241.42/images/portal/index/index_hot_study_img1.png" alt=""/>
-        </a>
-    </div>
-    <div class="study_right rt">
-        <div class="right_top">
-            <div id="product_parameters_vice1">
-                <h3 id="product_name_vice1">戴尔(Dell) 燃7000 不超15mm才敢叫轻薄</h3>
-                <h3 id="product_preferential_vice1"><b id="product_price_vice1">￥6688.00</b></h3>
-                <p class="view_details"><a href="/toItemInfo/10000007.html">查看详情</a></p>
-            </div>
-            <a href="/toItemInfo/10000007.html">
-            <img id="study_product_vice1" src="http://139.129.241.42/images/portal/index/index_hot_study_img2.png" alt=""/>
-             </a>
-        </div>
-        <div class="right_bottom">
-            <div id="product_parameters_vice2">
-                <h3 id="product_name_vice2">雅致布面年历本 张扬个性，点亮生活新时尚</h3>
-                <h3 id="product_preferential_vice2"><b id="product_price_vice2">￥68.00</b></h3>
-                <p class="view_details"><a href="/toItemInfo/10000002.html">查看详情</a></p>
-                <img id="study_product_vice2" src="http://139.129.241.42/images/portal/index/index_hot_study_img3.png" alt=""/>
+<!--LOGO SECTION END-->
+<section class="sec-menu" >
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+              <span class="menu-open-icon">
+                  <i class="fa fa-bars pull-left fa-2x b-clr" ></i>
+              </span>
+                <i class="pull-right"> 中国航发技术创新平台 </i>
             </div>
         </div>
     </div>
-</div>
-<!-- 美食餐饮-->
-<div id="gourmet">
-    <p>美食餐饮<span>爱美食 享品质生活</span></p>
-    <div class="bellows lf">
-        <div class="bellows_item">
-            <div class="bellows_header">
-                <h3>红烧肉盖饭(吉野家)</h3>
-            </div>
-            <div class="">
-                <div class="bellows_content">
-                    <p>
-                        红烧肉是热菜菜谱之一。以五花肉为制作主料，香甜松软。最好选用肥瘦相间的三层肉（五花肉）来做。红烧肉的烹饪技巧以砂锅为主，肥瘦相间，香甜松软，入口即化。红烧肉在我国各地流传甚广，是一道著名的大众菜肴,当然也是大家最喜欢的菜。
-                    </p></div>
+</section>
+<jsp:include page="common/slidemenu.jsp"></jsp:include>
+<!--MENU SECTION END-->
+<div class="content-wrapper">
+    <div class="container">
+        <div class="row pad-botm">
+            <div class="col-md-12">
+                <h4 class="header-line">双创平台</h4>
             </div>
         </div>
-        <div class="bellows_item">
-            <div class="bellows_header">
-                <h3>春卷套餐(魏家凉皮)</h3>
+
+        <div class="row " style="padding-bottom:10px;">
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                <div class="text-center"><i class="fa fa-plane fa-5x "></i>
+                    <h5> 30000 人注册</h5>
+                </div>
             </div>
-            <div class="bellows_content-wrapper" style="display: block">
-                <div class="bellows_content">
-                    <p>魏家凉皮怎么样?目前为止，魏家餐饮团队以“和谐、高效、奋进”为准则，坚持“全心全情、和谐共赢”的团队发展理念。带领魏家餐饮管理公司迈向新的高度。</p>
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                <div class="text-center"><i class="fa fa-reddit fa-5x "></i>
+                    <h5> 5000 人专家团队</h5>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                <div class="text-center"><i class="fa fa-angle-double-down fa-5x "></i>
+                    <h5> 3000 个项目 </h5>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                <div class="text-center"><i class="fa fa-mortar-board fa-5x "></i>
+                    <h5> 50 研究院校</h5>
                 </div>
             </div>
         </div>
-        <div class="bellows_item">
-            <div class="bellows_header active">
-                <h3>营养海鲜汤(山西面食家)</h3>
+
+        <!--第三部分-->
+        <hr />
+        <div class="row text-center ">
+            <div class="col-md-4 col-sm-4 col-xs-6">
+                <div class="alert alert-info text-center">
+                    <h4> 众创平台</h4>
+                    <hr />
+                    <i class="fa fa-building fa-4x"></i>
+                    <p>众创平台是XXXXXXXXX</p>
+                    <hr />
+                    <a href="#" class="btn btn-info">进入众创平台</a>
+                </div>
             </div>
-            <div class="bellows_content-wrapper">
-                <div class="bellows_content">
-                    <p>汤汁的香味在口里弥漫开来的新概念面条！粗粗的3mm面条中有凹凸，吃面条时也会跟着到嘴里来，使海鲜汤的味道和风味极大化。</p>
+            <div class="col-md-4 col-sm-4 col-xs-6">
+                <div class="alert alert-danger text-center">
+                    <h4> 众包平台</h4>
+                    <hr />
+                    <i class="fa fa-share-alt fa-4x"></i>
+                    <p>众包平台是XXXXXXXXXXXX</p>
+                    <hr />
+                    <a href="http://localhost:5566/zbportal" class="btn btn-danger">进入众包平台</a>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-6">
+                <div class="alert alert-success text-center">
+                    <h4> 数据共享中心</h4>
+                    <hr />
+                    <i class="fa fa-database fa-4x"></i>
+                    <p>数据共享中心是XXXXXXXXXXX</p>
+                    <hr/>
+                    <a href="#" class="btn btn-success">进入数据共享中心</a>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="food_detail rt">
-        <div>
-            <div class="food1 lf">
-                <img src="http://139.129.241.42/images/portal/index/index_hot_food_img1.png" alt=""/>
-                <h2>红烧肉盖饭套餐<span> (吉野家) </span></h2>
-                <p>￥20.00</p>
-                <a href="lookforward.html">立即订餐</a>
-            </div>
-            <div class="food1 lf">
-                <img src="http://139.129.241.42/images/portal/index/index_hot_food_img2.png" alt="" id="food1"/>
-
-                <h2>全素套餐<span> (魏家凉皮) </span></h2>
-
-                <p>￥16.00</p>
-                <a href="lookforward.html">立即订餐</a>
-            </div>
-            <div class="food1 lf">
-                <img src="http://139.129.241.42/images/portal/index/index_hot_food_img3.png" alt=""/>
-
-                <h2>营养海鲜汤<span> (山西面食家) </span></h2>
-
-                <p>￥25.00</p>
-                <a href="lookforward.html">立即订餐</a>
-            </div>
-        </div>
+        <hr />
     </div>
 </div>
-<!-- 页面底部-->
-<jsp:include page="commons/footer.jsp"></jsp:include>   
-<script>
-    //手风琴效果
-    $(function () {
-    	$('.bellows_item:nth-child(1)').addClass('bellows_open');
-        $(".bellows_content-wrapper").hide();
-        $(".bellows_header").click(function () {
-            $(this).next().slideDown()
-            $(this).parent(".bellows_item").addClass("bellows_open")
-            $(".bellows_header").not(this).next().slideUp()
-            $(".bellows_header").not(this).parent(".bellows_item").removeClass("bellows_open")
-        });
-        $('.bellows_header').on('click', 'h3', function (e) {
-            $(e.target).removeClass('active').siblings('.active').addClass('active');
-        });
-    })
-</script>
-<script src="${pageContext.request.contextPath}/js/index.js"></script>
-<script>
-    $('.ck-slide').ckSlide({
-        autoPlay: true,//默认为不自动播放，需要时请以此设置
-        dir: 'x',//默认效果淡隐淡出，x为水平移动，y 为垂直滚动
-        interval:3000//默认间隔2000毫秒
-    });
-</script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
 
