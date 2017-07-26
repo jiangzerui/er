@@ -142,6 +142,8 @@ public class UserController {
 				result = ScResult.ok(user);
 			}
 		}
+		jedisUtils.expire(ticket, REDIS_SESSION_EXPIRE);
+		jedisUtils.returnJedis(jedis);
 		out.println(jsoncallback+"("+JsonUtils.objectToJson(result)+")");
 		out.flush();
 		out.close();

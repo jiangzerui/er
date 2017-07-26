@@ -37,7 +37,7 @@
         </div>
     </div>
 </section>
-<jsp:include page="common/slidemenu.jsp"></jsp:include>
+<jsp:include page="commons/slidemenu.jsp"></jsp:include>
 <!--MENU SECTION END-->
 <div class="content-wrapper">
     <div class="container">
@@ -91,7 +91,7 @@
                     <i class="fa fa-share-alt fa-4x"></i>
                     <p>众包平台是XXXXXXXXXXXX</p>
                     <hr />
-                    <a href="http://localhost:5566/zbportal" class="btn btn-danger">进入众包平台</a>
+                    <a href="http://localhost:10032/sc-zb/index.html" class="btn btn-danger">进入众包平台</a>
                 </div>
             </div>
             <div class="col-md-4 col-sm-4 col-xs-6">

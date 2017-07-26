@@ -52,7 +52,6 @@
 
 	<!--
 	springmvc拦截器做用户验证
-	-->
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/order/**" />
@@ -61,6 +60,6 @@
 			<bean class="com.ajiatech.interceptor.MyInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
-
+	-->
 
 </beans>
