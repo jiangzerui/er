@@ -87,7 +87,6 @@ public class UserController {
 			jedis.hset(ticket, REDIS_SESSION_USER_KEY, JsonUtils.objectToJson(user));
 			jedis.expire(ticket, REDIS_SESSION_EXPIRE);
 			jedisUtils.returnJedis(jedis);
-			
 			return "redirect:"+PORTALURL+"/index.html";
 		}
 		model.addAttribute("error_msg", "账号密码有误");
@@ -129,21 +128,21 @@ public class UserController {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		String ticket = CookieUtils.getCookieValue(request, TICKET_COOKIE_NAME);
-		Jedis jedis = jedisUtils.getJedis();
 		ScResult result = null;
 		if(ticket == null){
 			result = ScResult.build(SConsts.CODE_ERROR, "参数异常：需要ticket参数");
 		}else{
+			Jedis jedis = jedisUtils.getJedis();
 			String userJson = jedis.hget(ticket, REDIS_SESSION_USER_KEY);
 			if(userJson == null){
 				result = ScResult.build(SConsts.CODE_ERROR, "请重新登录");
 			}else{
+				jedisUtils.expire(ticket, REDIS_SESSION_EXPIRE);
 				User user = JsonUtils.jsonToPojo(userJson, User.class);
 				result = ScResult.ok(user);
 			}
+			jedisUtils.returnJedis(jedis);
 		}
-		jedisUtils.expire(ticket, REDIS_SESSION_EXPIRE);
-		jedisUtils.returnJedis(jedis);
 		out.println(jsoncallback+"("+JsonUtils.objectToJson(result)+")");
 		out.flush();
 		out.close();

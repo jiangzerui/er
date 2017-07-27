@@ -3,9 +3,11 @@ package com.sc.pojo;
 public class Menu {
     private Integer menuId;
 
-    private Integer menuName;
+    private String menuName;
 
     private String menuCode;
+
+    private String menuUrl;
 
     public Integer getMenuId() {
         return menuId;
@@ -15,12 +17,12 @@ public class Menu {
         this.menuId = menuId;
     }
 
-    public Integer getMenuName() {
+    public String getMenuName() {
         return menuName;
     }
 
-    public void setMenuName(Integer menuName) {
-        this.menuName = menuName;
+    public void setMenuName(String menuName) {
+        this.menuName = menuName == null ? null : menuName.trim();
     }
 
     public String getMenuCode() {
@@ -29,5 +31,13 @@ public class Menu {
 
     public void setMenuCode(String menuCode) {
         this.menuCode = menuCode == null ? null : menuCode.trim();
+    }
+
+    public String getMenuUrl() {
+        return menuUrl;
+    }
+
+    public void setMenuUrl(String menuUrl) {
+        this.menuUrl = menuUrl == null ? null : menuUrl.trim();
     }
 }

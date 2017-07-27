@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div id="side-menu"  style="margin-top:66px;">
-    <ul>
+    <ul id="side-menu-ul">
         <li id="sel_user" style="text-align:center;">
             <a href="http://localhost:10012/sc-sso/toLogin.html" title="Dashboard"><i class="fa fa-user fa-2x" style="padding:0px;"></i> </a>
             <p>请登陆</p>
@@ -9,9 +9,11 @@
 </div>
 <script type="text/javascript">
 $(function(){
-	//验证用户：生成侧边栏
+	//页面加载完毕后生成侧边栏
+	$("#side-menu-ul").load("http://localhost:10032/sc-zb/getSlideMenu.html");
+	/*
 	$.ajax({
-		   url: "http://localhost:10012/sc-sso/checkUserJsonp.html",
+		   url: "http://localhost:10032/sc-zb/getSlideMenu.html",
 		   type: "GET",
 		   dataType: 'jsonp',
 		   jsonp: 'jsoncallback',
@@ -26,6 +28,7 @@ $(function(){
 		    alert("用户验证出错，请重新登录");
 		   }
 		});
+	*/
 });
 </script>
 

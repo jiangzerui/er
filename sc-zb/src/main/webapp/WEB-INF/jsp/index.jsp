@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -45,38 +46,18 @@
 		<div id="page-inner">
 			<div class="sliderfig">
 				<ul id="flexiselDemo1" class="row">
-					<li class="col-md-3 col-sm-6 col-xs-6">
-						<div class="about-info-left panel panel-back noti-box">
-							<p>
-								<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-								<a href="http://localhost:5566/fund">基金1</a>
-							</p>
-						</div>
-					</li>
-					<li class="col-md-3 col-sm-6 col-xs-6">
-						<div class="about-info-left panel panel-back noti-box">
-							<p>
-								<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-								<a href="http://localhost:5566/fund">基金2</a>
-							</p>
-						</div>
-					</li>
-					<li class="col-md-3 col-sm-6 col-xs-6">
-						<div class="about-info-left panel panel-back noti-box">
-							<p>
-								<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-								<a href="http://localhost:5566/fund">基金3</a>
-							</p>
-						</div>
-					</li>
-					<li class="col-md-3 col-sm-6 col-xs-6">
-						<div class="about-info-left panel panel-back noti-box">
-							<p>
-								<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-								<a href="http://localhost:5566/fund">基金4</a>
-							</p>
-						</div>
-					</li>
+					<c:forEach items="${projectList}" var="project">
+						<li class="col-md-3 col-sm-6 col-xs-6">
+							<div class="about-info-left panel panel-back noti-box">
+								<p>
+									<a href="http://localhost:5566/fund">
+									<span style="display:block; height:150px; background: url('${project.projectLogoUrl}') center center no-repeat; background-size:contain;"></span>
+									${project.projectName}
+									</a>
+								</p>
+							</div>
+						</li>
+					</c:forEach>
 				</ul>
 			</div>
 		</div>

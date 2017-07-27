@@ -3,9 +3,9 @@ package com.sc.pojo;
 public class RoleMenu {
     private Integer roleMenuId;
 
-    private Integer roleId;
+    private String roleCode;
 
-    private Integer menuId;
+    private String menuCode;
 
     public Integer getRoleMenuId() {
         return roleMenuId;
@@ -15,19 +15,19 @@ public class RoleMenu {
         this.roleMenuId = roleMenuId;
     }
 
-    public Integer getRoleId() {
-        return roleId;
+    public String getRoleCode() {
+        return roleCode;
     }
 
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
+    public void setRoleCode(String roleCode) {
+        this.roleCode = roleCode == null ? null : roleCode.trim();
     }
 
-    public Integer getMenuId() {
-        return menuId;
+    public String getMenuCode() {
+        return menuCode;
     }
 
-    public void setMenuId(Integer menuId) {
-        this.menuId = menuId;
+    public void setMenuCode(String menuCode) {
+        this.menuCode = menuCode == null ? null : menuCode.trim();
     }
 }

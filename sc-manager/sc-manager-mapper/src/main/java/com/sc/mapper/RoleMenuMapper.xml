@@ -3,8 +3,8 @@
 <mapper namespace="com.sc.mapper.RoleMenuMapper">
   <resultMap id="BaseResultMap" type="com.sc.pojo.RoleMenu">
     <id column="role_menu_id" jdbcType="INTEGER" property="roleMenuId" />
-    <result column="role_id" jdbcType="INTEGER" property="roleId" />
-    <result column="menu_id" jdbcType="INTEGER" property="menuId" />
+    <result column="role_code" jdbcType="VARCHAR" property="roleCode" />
+    <result column="menu_code" jdbcType="VARCHAR" property="menuCode" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    role_menu_id, role_id, menu_id
+    role_menu_id, role_code, menu_code
   </sql>
   <select id="selectByExample" parameterType="com.sc.pojo.RoleMenuExample" resultMap="BaseResultMap">
     select
@@ -98,9 +98,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.sc.pojo.RoleMenu">
-    insert into role_menu (role_menu_id, role_id, menu_id
+    insert into role_menu (role_menu_id, role_code, menu_code
       )
-    values (#{roleMenuId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{menuId,jdbcType=INTEGER}
+    values (#{roleMenuId,jdbcType=INTEGER}, #{roleCode,jdbcType=VARCHAR}, #{menuCode,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.sc.pojo.RoleMenu">
@@ -109,22 +109,22 @@
       <if test="roleMenuId != null">
         role_menu_id,
       </if>
-      <if test="roleId != null">
-        role_id,
+      <if test="roleCode != null">
+        role_code,
       </if>
-      <if test="menuId != null">
-        menu_id,
+      <if test="menuCode != null">
+        menu_code,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="roleMenuId != null">
         #{roleMenuId,jdbcType=INTEGER},
       </if>
-      <if test="roleId != null">
-        #{roleId,jdbcType=INTEGER},
+      <if test="roleCode != null">
+        #{roleCode,jdbcType=VARCHAR},
       </if>
-      <if test="menuId != null">
-        #{menuId,jdbcType=INTEGER},
+      <if test="menuCode != null">
+        #{menuCode,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -140,11 +140,11 @@
       <if test="record.roleMenuId != null">
         role_menu_id = #{record.roleMenuId,jdbcType=INTEGER},
       </if>
-      <if test="record.roleId != null">
-        role_id = #{record.roleId,jdbcType=INTEGER},
+      <if test="record.roleCode != null">
+        role_code = #{record.roleCode,jdbcType=VARCHAR},
       </if>
-      <if test="record.menuId != null">
-        menu_id = #{record.menuId,jdbcType=INTEGER},
+      <if test="record.menuCode != null">
+        menu_code = #{record.menuCode,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -154,8 +154,8 @@
   <update id="updateByExample" parameterType="map">
     update role_menu
     set role_menu_id = #{record.roleMenuId,jdbcType=INTEGER},
-      role_id = #{record.roleId,jdbcType=INTEGER},
-      menu_id = #{record.menuId,jdbcType=INTEGER}
+      role_code = #{record.roleCode,jdbcType=VARCHAR},
+      menu_code = #{record.menuCode,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -163,19 +163,19 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.sc.pojo.RoleMenu">
     update role_menu
     <set>
-      <if test="roleId != null">
-        role_id = #{roleId,jdbcType=INTEGER},
+      <if test="roleCode != null">
+        role_code = #{roleCode,jdbcType=VARCHAR},
       </if>
-      <if test="menuId != null">
-        menu_id = #{menuId,jdbcType=INTEGER},
+      <if test="menuCode != null">
+        menu_code = #{menuCode,jdbcType=VARCHAR},
       </if>
     </set>
     where role_menu_id = #{roleMenuId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sc.pojo.RoleMenu">
     update role_menu
-    set role_id = #{roleId,jdbcType=INTEGER},
-      menu_id = #{menuId,jdbcType=INTEGER}
+    set role_code = #{roleCode,jdbcType=VARCHAR},
+      menu_code = #{menuCode,jdbcType=VARCHAR}
     where role_menu_id = #{roleMenuId,jdbcType=INTEGER}
   </update>
 </mapper>
