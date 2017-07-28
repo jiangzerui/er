@@ -50,7 +50,7 @@
 						<li class="col-md-3 col-sm-6 col-xs-6">
 							<div class="about-info-left panel panel-back noti-box">
 								<p>
-									<a href="http://localhost:10032/sc-zb/fund.html">
+									<a href="http://localhost:10032/sc-zb/fund.html?projectId=${project.projectId}">
 									<span style="display:block; height:150px; background: url('${project.projectLogoUrl}') center center no-repeat; background-size:contain;"></span>
 									${project.projectName}
 									</a>

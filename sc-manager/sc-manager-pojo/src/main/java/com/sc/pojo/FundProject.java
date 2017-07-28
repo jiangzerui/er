@@ -1,6 +1,6 @@
 package com.sc.pojo;
 
-public class FundProject {
+public class FundProject extends Project{
     private Integer fundProjectId;
 
     public Integer getFundProjectId() {

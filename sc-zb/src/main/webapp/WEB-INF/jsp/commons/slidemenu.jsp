@@ -13,7 +13,7 @@ $(function(){
 	$("#side-menu-ul").load("http://localhost:10032/sc-zb/getSlideMenu.html");
 	/*
 	$.ajax({
-		   url: "http://localhost:10032/sc-zb/getSlideMenu.html",
+		   url: "http://localhost:10032/sc-sso/checkUserJsonp.html",
 		   type: "GET",
 		   dataType: 'jsonp',
 		   jsonp: 'jsoncallback',

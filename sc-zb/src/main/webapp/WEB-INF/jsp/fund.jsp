@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -37,13 +38,12 @@
 <div id="about" class="about-info">
     <div class="about-grid">
         <div class="col-md-6 about-grid-left">
-            <img src="assets/img/1.JPG" alt=" " class="img-responsive" />
+            <img src="${project.projectLogoUrl }" alt=" " class="img-responsive" />
         </div>
         <div class="col-md-6 about-grid-right">
-            <h2>众包平台</h2>
+            <h2>${project.projectName}</h2>
 
-            <p>众包平台是XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.</p>
+            <p>${project.description}</p>
         </div>
         <div class="clearfix"> </div>
     </div>
@@ -52,85 +52,31 @@
 
 <hr />
 
+<c:if test="${project.projectType==1}">
 <!-- events -->
 <div id="events" class="events">
     <div class="container">
         <h3>新闻中心</h3>
         <div class="events-grids">
+        	<c:forEach var="projectNews"  items="${projectNewsList}" varStatus="status">
             <div class="col-md-4 events-grid">
                 <div class="cal">
-                    <img src="images/1.png" alt=" " class="img-responsive" />
                     <div class="cal-info">
-                        <h4>molestiae consequatur</h4>
-                        <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse
-                            quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo
-                            voluptas nulla pariatur</p>
+                        <h4>${projectNews.title}</h4>
+                        <p>${projectNews.content}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 events-grid">
-                <div class="cal">
-                    <img src="images/1.png" alt=" " class="img-responsive" />
-                    <div class="cal-info">
-                        <h4>molestiae consequatur</h4>
-                        <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse
-                            quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo
-                            voluptas nulla pariatur</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 events-grid">
-                <div class="cal">
-                    <img src="images/1.png" alt=" " class="img-responsive" />
-                    <div class="cal-info">
-                        <h4>molestiae consequatur</h4>
-                        <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse
-                            quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo
-                            voluptas nulla pariatur</p>
-                    </div>
-                </div>
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-        <div class="events-grids1">
-            <div class="col-md-4 events-grid1">
-                <div class="events-grid11">
-                    <span>01.</span>
-                    <div class="events-grid11-info">
-                        <h4><i class="glyphicon glyphicon-calendar" aria-hidden="true"></i><label>28 August 2015</label>molestiae consequatur</h4>
-                        <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse
-                            quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo
-                            voluptas nulla pariatur</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 events-grid1">
-                <div class="events-grid11">
-                    <span>02.</span>
-                    <div class="events-grid11-info">
-                        <h4><i class="glyphicon glyphicon-calendar" aria-hidden="true"></i><label>28 August 2015</label>molestiae consequatur</h4>
-                        <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse
-                            quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo
-                            voluptas nulla pariatur</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 events-grid1">
-                <div class="events-grid11">
-                    <span>03.</span>
-                    <div class="events-grid11-info">
-                        <h4><i class="glyphicon glyphicon-calendar" aria-hidden="true"></i><label>28 August 2015</label>molestiae consequatur</h4>
-                        <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse
-                            quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo
-                            voluptas nulla pariatur</p>
-                    </div>
-                </div>
-            </div>
-            <div class="clearfix"> </div>
+            <c:if test="${(status.index+1)%3 == 0}">
+            	<div class="clearfix"> </div>
+            </c:if>
+            </c:forEach>
         </div>
     </div>
 </div>
 <!-- //events -->
+</c:if>
+
 
 <!-- portfolio -->
 <div id="portfolio" class="gallery">

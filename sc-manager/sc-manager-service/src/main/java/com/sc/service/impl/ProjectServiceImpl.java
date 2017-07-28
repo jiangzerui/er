@@ -24,4 +24,16 @@ public class ProjectServiceImpl implements ProjectService {
 		return projects;
 	}
 
+	@Override
+	public Project getProjectById(int projectId) {
+		ProjectExample example = new ProjectExample();
+		Criteria c = example.createCriteria();
+		c.andProjectIdEqualTo(projectId);
+		List<Project> ps = projectMapper.selectByExample(example);
+		if(ps!=null && ps.size()>0){
+			return ps.get(0);
+		}
+		return null;
+	}
+
 }
