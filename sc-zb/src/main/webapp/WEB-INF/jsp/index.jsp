@@ -50,7 +50,7 @@
 						<li class="col-md-3 col-sm-6 col-xs-6">
 							<div class="about-info-left panel panel-back noti-box">
 								<p>
-									<a href="http://localhost:5566/fund">
+									<a href="http://localhost:10032/sc-zb/fund.html">
 									<span style="display:block; height:150px; background: url('${project.projectLogoUrl}') center center no-repeat; background-size:contain;"></span>
 									${project.projectName}
 									</a>
@@ -62,7 +62,7 @@
 			</div>
 		</div>
 	</div>
-	<hr />
+
 	<div class="container">
 		<div class="about-grid">
 			<div class="col-md-6 about-grid-left">
@@ -70,7 +70,6 @@
 			</div>
 			<div class="col-md-6 about-grid-right">
 				<h2>众包平台</h2>
-
 				<p>众包平台是XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 					XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.</p>
 			</div>
