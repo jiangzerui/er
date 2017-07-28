@@ -34,3 +34,23 @@ sc-zb/.settings/org.eclipse.wst.validation.prefs
 sc-common/.classpath
 
 sc-common/.settings/org.eclipse.jdt.core.prefs
+
+sc-zb/target/m2e-wtp/web-resources/META-INF/maven/com.sc/sc-zb/pom.properties
+
+sc-zb/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+
+sc-sso/target/m2e-wtp/web-resources/META-INF/maven/com.sc/sc-sso/pom.properties
+
+sc-sso/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+
+sc-portal/target/m2e-wtp/web-resources/META-INF/maven/com.sc/sc-portal/pom.properties
+
+sc-portal/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+
+sc-manager/sc-manager-web/target/m2e-wtp/web-resources/META-INF/maven/com.sc/sc-manager-web/pom.properties
+
+*.MF
+
+sc-manager/sc-manager-service/target/classes/META-INF/maven/com.sc/sc-manager-service/pom.properties
+
+*.MF
