@@ -54,3 +54,4 @@ sc-manager/sc-manager-web/target/m2e-wtp/web-resources/META-INF/maven/com.sc/sc-
 sc-manager/sc-manager-service/target/classes/META-INF/maven/com.sc/sc-manager-service/pom.properties
 
 *.MF
+*.class
