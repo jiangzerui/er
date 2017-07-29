@@ -93,3 +93,5 @@ sc-common/.classpath
 *.component
 
 sc-common/target/classes/META-INF/maven/com.sc/sc-common/pom.properties
+
+sc-common/target/classes/META-INF/maven/com.sc/sc-common/pom.properties
