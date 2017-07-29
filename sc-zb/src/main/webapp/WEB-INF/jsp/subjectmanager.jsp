@@ -14,6 +14,7 @@
 	<link href="assets/css/style.css" rel="stylesheet" />
 	<link href="assets/css/zb/custom.css" rel="stylesheet" />
 	<script src="assets/js/jquery-1.11.1.js"></script>
+    <script src="assets/js/bootstrap.js"></script>
 
 	<!-- CUSTOM SCRIPTS  -->
 	<script src="assets/js/jquery.flexisel.js"></script>
