@@ -95,3 +95,11 @@ sc-common/.classpath
 sc-common/target/classes/META-INF/maven/com.sc/sc-common/pom.properties
 
 sc-common/target/classes/META-INF/maven/com.sc/sc-common/pom.properties
+
+sc-manager/sc-manager-web/target/m2e-wtp/web-resources/META-INF/maven/com.sc/sc-manager-web/pom.properties
+
+sc-portal/target/m2e-wtp/web-resources/META-INF/maven/com.sc/sc-portal/pom.properties
+
+sc-sso/target/m2e-wtp/web-resources/META-INF/maven/com.sc/sc-sso/pom.properties
+
+sc-zb/target/m2e-wtp/web-resources/META-INF/maven/com.sc/sc-zb/pom.properties

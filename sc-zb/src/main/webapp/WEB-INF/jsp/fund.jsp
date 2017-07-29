@@ -8,16 +8,14 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>双创平台</title>
-    <!-- BOOTSTRAP CORE STYLE CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
-    <!-- FONTAWESOME STYLE CSS -->
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
-    <!-- CUSTOM STYLE CSS -->
     <link href="assets/css/style.css" rel="stylesheet" />
+    	<link href="assets/css/zb/custom.css" rel="stylesheet" />
+    	<link href="assets/css/custom.css" rel="stylesheet" />
 	<script src="assets/js/jquery-1.11.1.js"></script>
-	<!-- CUSTOM SCRIPTS  -->
 	<script src="assets/js/custom.js"></script>
-
+	<script src="assets/js/jquery.flexisel.js"></script>
 </head>
 <body>
 <!--LOGO SECTION END-->
@@ -28,7 +26,7 @@
               <span class="menu-open-icon">
                   <i class="fa fa-bars pull-left fa-2x b-clr" ></i>
               </span>
-                <i class="pull-right"> 动力基金 </i>
+                <i class="pull-right">众包平台</i>
             </div>
         </div>
     </div>
@@ -38,14 +36,19 @@
 <div id="about" class="about-info">
     <div class="about-grid">
         <div class="col-md-6 about-grid-left">
-            <img src="${project.projectLogoUrl }" alt=" " class="img-responsive" />
+            <img src="${project.projectLogoUrl}" alt=" " class="img-responsive" />
         </div>
         <div class="col-md-6 about-grid-right">
             <h2>${project.projectName}</h2>
-
-            <p>${project.description}</p>
+            <p>${project.description}</p><br/>
+            	<p>
+              <button type="button" class="btn btn-primary">项目指南</button>
+              <button type="button" class="btn btn-success">项目申请</button>
+            </p>
         </div>
-        <div class="clearfix"> </div>
+        <div class="clearfix">
+        
+        	</div>
     </div>
 
 </div>
@@ -168,11 +171,6 @@
 </div>
 <!-- //portfolio -->
 <hr />
-
-<script src="assets/js/jquery-1.11.1.js"></script>
-<script src="assets/js/jquery.flexisel.js"></script>
-<!-- CUSTOM SCRIPTS  -->
-<script src="assets/js/custom.js"></script>
 </body>
 </html>
 
