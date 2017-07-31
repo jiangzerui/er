@@ -1,5 +1,17 @@
 
 *.MF
-*.classes
+*.class
 *.classpath
-target/*
+*/pom.properties
+*.prefs
+*.jsdtscope
+sc-zb/.settings/*
+sc-sso/.settings/*
+sc-portal/.settings/*
+sc-zb/target/*
+sc-sso/target/*
+sc-portal/target/*
+sc-zb/.project
+sc-portal/.project
+sc-sso/.project
+.DS_Store
