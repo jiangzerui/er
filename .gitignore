@@ -121,3 +121,5 @@ sc-manager/sc-manager-pojo/target/test-classes/com/sc/mapper/MenuMapper.xml
 sc-manager/sc-manager-pojo/target/test-classes/com/sc/test/GeneratorMybatis.class
 sc-manager/sc-manager-pojo/target/test-classes/com/sc/mapper/RoleMenuMapper.xml
 >>>>>>> origin/master
+
+*.MF
