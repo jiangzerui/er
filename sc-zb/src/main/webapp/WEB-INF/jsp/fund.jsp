@@ -8,17 +8,66 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>双创平台</title>
-    <!-- BOOTSTRAP CORE STYLE CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
-    <!-- FONTAWESOME STYLE CSS -->
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
-    <!-- CUSTOM STYLE CSS -->
     <link href="assets/css/style.css" rel="stylesheet" />
+    	<link href="assets/css/zb/custom.css" rel="stylesheet" />
+    	<link href="assets/css/custom.css" rel="stylesheet" />
 	<script src="assets/js/jquery-1.11.1.js"></script>
-	<!-- CUSTOM SCRIPTS  -->
 	<script src="assets/js/custom.js"></script>
-
+	<script src="assets/js/jquery.flexisel.js"></script>
 </head>
+
+<script>
+  $('#dlButton').on('click', function () {
+    var $btn = $(this).button('下载中')
+    // business logic...
+    $btn.button('reset')
+  })
+  
+   function applyBut(){
+	  alert('there')
+    	  $.ajax({
+   		   url: "http://localhost:10012/sc-sso/checkUserJsonp.html",
+   		   type: "GET",
+   		   dataType: 'jsonp',
+   		   jsonp: 'jsoncallback',
+   		   success: function (data) {//客户端jquery预先定义好的callback函数,成功获取跨域服务器上的json数据后,会动态执行这个callback函数
+   			   if(data.status == 200){ //登录验证成功  
+					alert('该用户已经登录，可以申请项目')
+					$('#events').html('');
+            			$('#portfolio').html('');
+            			$('#applyPro').append(
+            			'<form><div class="form-group"><input type="text" class="form-control" placeholder="课题名称"></div>'+
+            			'<label for="exampleInputEmail1">所属组织</label><select multiple class="form-control"><option>北航</option><option>南航</option><option>研究院</option></select></div>'+
+            			'<div class="form-group"><label for="exampleInputFile">选择申报文件</label><input type="file" id="exampleInputFile"></div>'+
+            			'<button type="submit" class="btn btn-default" onclick="createSubject()">Submit</button></form>'
+            			)
+   			   }else{ //未登录的状态
+   				   alert('该用户没有登录，请先登录')
+   			   }
+   		   },
+   		   error: function(xhr){
+   		    alert("用户验证出错，请重新登录");
+   		   }
+   		});
+    }
+  
+  function createSubject(projectId){
+	  $.ajax({
+		   url: "http://localhost:10022/sc-zb/createSubject/projectId/"+projectId,
+		   type: "GET",
+		   dataType: 'jsonp',
+		   jsonp: 'jsoncallback',
+		   success: function (data) {//客户端jquery预先定义好的callback函数,成功获取跨域服务器上的json数据后,会动态执行这个callback函数
+				
+		   },
+		   error: function(xhr){
+		    alert("用户验证出错，请重新登录");
+		   }
+		});
+}
+</script>
 <body>
 <!--LOGO SECTION END-->
 <section class="sec-menu" >
@@ -28,7 +77,7 @@
               <span class="menu-open-icon">
                   <i class="fa fa-bars pull-left fa-2x b-clr" ></i>
               </span>
-                <i class="pull-right"> 动力基金 </i>
+                <i class="pull-right">众包平台</i>
             </div>
         </div>
     </div>
@@ -38,22 +87,22 @@
 <div id="about" class="about-info">
     <div class="about-grid">
         <div class="col-md-6 about-grid-left">
-            <img src="${project.projectLogoUrl }" alt=" " class="img-responsive" />
+            <img src="${project.projectLogoUrl}" alt=" " class="img-responsive" />
         </div>
         <div class="col-md-6 about-grid-right">
             <h2>${project.projectName}</h2>
-
-            <p>${project.description}</p>
+            <p>${project.description}</p><br/>
+            	<p>
+              <button type="button" id="dlButton" class="btn btn-primary">项目指南</button>
+              <button type="button" id="applyButton" class="btn btn-success" onclick="applyBut()">项目申请</button>
+            </p>
         </div>
-        <div class="clearfix"> </div>
+        <div class="clearfix"></div>
     </div>
-
 </div>
-
 <hr />
-
+<div id="applyPro"></div>
 <c:if test="${project.projectType==1}">
-<!-- events -->
 <div id="events" class="events">
     <div class="container">
         <h3>新闻中心</h3>
@@ -74,7 +123,6 @@
         </div>
     </div>
 </div>
-<!-- //events -->
 </c:if>
 
 
@@ -82,29 +130,6 @@
 <div id="portfolio" class="gallery">
     <div class="container">
         <h3>成果展现</h3>
-        <div class="col-md-6 baner-top">
-            <figure class="effect-bubba">
-                <a href="assets/img/1.JPG" rel="title" class="b-link-stripe b-animate-go  thickbox">
-                    <img src="assets/img/1.JPG" alt="" class="img-responsive" />
-                    <figcaption>
-                        <h4>Enimet pulvinar posuere</h4>
-                        <p>In sit amet sapien eros Integer dolore magna aliqua</p>
-                    </figcaption>
-                </a>
-            </figure>
-        </div>
-        <div class="col-md-6 baner-top">
-            <figure class="effect-bubba">
-                <a href="assets/img/1.JPG" rel="title" class="b-link-stripe b-animate-go  thickbox">
-                    <img src="assets/img/1.JPG" alt="" class="img-responsive" />
-                    <figcaption>
-                        <h4>Enimet pulvinar posuere</h4>
-                        <p>In sit amet sapien eros Integer dolore magna aliqua</p>
-                    </figcaption>
-                </a>
-            </figure>
-        </div>
-        <div class="clearfix"> </div>
         <div class="baner-row">
             <div class="col-md-4 baner-bottom">
                 <figure class="effect-bubba">
@@ -141,38 +166,10 @@
             </div>
             <div class="clearfix"> </div>
         </div>
-        <div class="col-md-6 baner-top">
-            <figure class="effect-bubba">
-                <a href="assets/img/1.JPG" rel="title" class="b-link-stripe b-animate-go  thickbox">
-                    <img src="assets/img/1.JPG" alt="" class="img-responsive" />
-                    <figcaption>
-                        <h4>Enimet pulvinar posuere</h4>
-                        <p>In sit amet sapien eros Integer dolore magna aliqua</p>
-                    </figcaption>
-                </a>
-            </figure>
-        </div>
-        <div class="col-md-6 baner-top">
-            <figure class="effect-bubba">
-                <a href="assets/img/1.JPG" rel="title" class="b-link-stripe b-animate-go  thickbox">
-                    <img src="assets/img/1.JPG" alt="" class="img-responsive" />
-                    <figcaption>
-                        <h4>Enimet pulvinar posuere</h4>
-                        <p>In sit amet sapien eros Integer dolore magna aliqua</p>
-                    </figcaption>
-                </a>
-            </figure>
-        </div>
-        <div class="clearfix"> </div>
     </div>
 </div>
-<!-- //portfolio -->
-<hr />
 
-<script src="assets/js/jquery-1.11.1.js"></script>
-<script src="assets/js/jquery.flexisel.js"></script>
-<!-- CUSTOM SCRIPTS  -->
-<script src="assets/js/custom.js"></script>
+<hr />
 </body>
 </html>
 
