@@ -9,7 +9,7 @@
 <c:if test="${user!=null}">
 	<li id="sel_user" style="text-align:center;">
 	    <a href="javascript:;" title="Dashboard"><i class="fa fa-user fa-2x" style="padding:0px;"></i> </a>
-	    <p>${user.name}</p>
+	    <p>${user.name} <br/><a href="http://localhost:10012/sc-sso/logout.html?loginname=${user.name}" style="font-size:14px;">[注销]</a></p>
 	</li>
 	<c:forEach items="${menuList}" var="menu">
 	<li id="sel_user" style="text-align:center;">

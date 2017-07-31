@@ -62,6 +62,30 @@ public class UserController {
 		return result;
 	}
 	
+	@RequestMapping("/logout")
+	public String logout(HttpServletRequest request, String loginname){
+		//从redis中获取当前登录用户
+		Jedis jedis = jedisUtils.getJedis();
+		String ticket = CookieUtils.getCookieValue(request, TICKET_COOKIE_NAME);
+		if(ticket == null){
+			jedisUtils.returnJedis(jedis);
+			return "redirect:toLogin.html";
+		}
+		String userJson = jedis.hget(ticket, REDIS_SESSION_USER_KEY);
+		if(userJson == null){
+			jedisUtils.returnJedis(jedis);
+			return "redirect:toLogin.html";
+		}
+		User user = JsonUtils.jsonToPojo(userJson, User.class);
+		if(user.getLoginName().equals(loginname)){ //清除掉redis中的ticket
+			jedis.del(ticket);
+			jedisUtils.returnJedis(jedis);
+			//ticket移除:
+			System.out.println("移除ticket:"+ticket);
+		}
+		return "redirect:toLogin.html";
+	}
+	
 	@RequestMapping("/login")
 	public String login(String loginname, String password, String roleCode, HttpServletRequest request, HttpServletResponse response, Model model){
 		List<Role> roles = userService.getUserRoleByLoginname(loginname);
