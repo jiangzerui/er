@@ -13,9 +13,17 @@ public class Subject {
 
     private Integer projectId;
 
-    private Integer subjectStatusId;
+    private Integer subjectStatus;
 
-    private Integer subjectResultId;
+    private Integer pmId;
+
+    private String pmSuggest;
+
+    private Integer professionalId;
+
+    private String professionalSuggest;
+
+    private Integer orgId;
 
     public Integer getSubjectId() {
         return subjectId;
@@ -65,19 +73,51 @@ public class Subject {
         this.projectId = projectId;
     }
 
-    public Integer getSubjectStatusId() {
-        return subjectStatusId;
+    public Integer getSubjectStatus() {
+        return subjectStatus;
     }
 
-    public void setSubjectStatusId(Integer subjectStatusId) {
-        this.subjectStatusId = subjectStatusId;
+    public void setSubjectStatus(Integer subjectStatus) {
+        this.subjectStatus = subjectStatus;
     }
 
-    public Integer getSubjectResultId() {
-        return subjectResultId;
+    public Integer getPmId() {
+        return pmId;
     }
 
-    public void setSubjectResultId(Integer subjectResultId) {
-        this.subjectResultId = subjectResultId;
+    public void setPmId(Integer pmId) {
+        this.pmId = pmId;
+    }
+
+    public String getPmSuggest() {
+        return pmSuggest;
+    }
+
+    public void setPmSuggest(String pmSuggest) {
+        this.pmSuggest = pmSuggest == null ? null : pmSuggest.trim();
+    }
+
+    public Integer getProfessionalId() {
+        return professionalId;
+    }
+
+    public void setProfessionalId(Integer professionalId) {
+        this.professionalId = professionalId;
+    }
+
+    public String getProfessionalSuggest() {
+        return professionalSuggest;
+    }
+
+    public void setProfessionalSuggest(String professionalSuggest) {
+        this.professionalSuggest = professionalSuggest == null ? null : professionalSuggest.trim();
+    }
+
+    public Integer getOrgId() {
+        return orgId;
+    }
+
+    public void setOrgId(Integer orgId) {
+        this.orgId = orgId;
     }
 }

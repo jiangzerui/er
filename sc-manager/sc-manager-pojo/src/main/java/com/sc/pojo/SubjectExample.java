@@ -494,123 +494,383 @@ public class SubjectExample {
             return (Criteria) this;
         }
 
-        public Criteria andSubjectStatusIdIsNull() {
-            addCriterion("subject_status_id is null");
+        public Criteria andSubjectStatusIsNull() {
+            addCriterion("subject_status is null");
             return (Criteria) this;
         }
 
-        public Criteria andSubjectStatusIdIsNotNull() {
-            addCriterion("subject_status_id is not null");
+        public Criteria andSubjectStatusIsNotNull() {
+            addCriterion("subject_status is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSubjectStatusIdEqualTo(Integer value) {
-            addCriterion("subject_status_id =", value, "subjectStatusId");
+        public Criteria andSubjectStatusEqualTo(Integer value) {
+            addCriterion("subject_status =", value, "subjectStatus");
             return (Criteria) this;
         }
 
-        public Criteria andSubjectStatusIdNotEqualTo(Integer value) {
-            addCriterion("subject_status_id <>", value, "subjectStatusId");
+        public Criteria andSubjectStatusNotEqualTo(Integer value) {
+            addCriterion("subject_status <>", value, "subjectStatus");
             return (Criteria) this;
         }
 
-        public Criteria andSubjectStatusIdGreaterThan(Integer value) {
-            addCriterion("subject_status_id >", value, "subjectStatusId");
+        public Criteria andSubjectStatusGreaterThan(Integer value) {
+            addCriterion("subject_status >", value, "subjectStatus");
             return (Criteria) this;
         }
 
-        public Criteria andSubjectStatusIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("subject_status_id >=", value, "subjectStatusId");
+        public Criteria andSubjectStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("subject_status >=", value, "subjectStatus");
             return (Criteria) this;
         }
 
-        public Criteria andSubjectStatusIdLessThan(Integer value) {
-            addCriterion("subject_status_id <", value, "subjectStatusId");
+        public Criteria andSubjectStatusLessThan(Integer value) {
+            addCriterion("subject_status <", value, "subjectStatus");
             return (Criteria) this;
         }
 
-        public Criteria andSubjectStatusIdLessThanOrEqualTo(Integer value) {
-            addCriterion("subject_status_id <=", value, "subjectStatusId");
+        public Criteria andSubjectStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("subject_status <=", value, "subjectStatus");
             return (Criteria) this;
         }
 
-        public Criteria andSubjectStatusIdIn(List<Integer> values) {
-            addCriterion("subject_status_id in", values, "subjectStatusId");
+        public Criteria andSubjectStatusIn(List<Integer> values) {
+            addCriterion("subject_status in", values, "subjectStatus");
             return (Criteria) this;
         }
 
-        public Criteria andSubjectStatusIdNotIn(List<Integer> values) {
-            addCriterion("subject_status_id not in", values, "subjectStatusId");
+        public Criteria andSubjectStatusNotIn(List<Integer> values) {
+            addCriterion("subject_status not in", values, "subjectStatus");
             return (Criteria) this;
         }
 
-        public Criteria andSubjectStatusIdBetween(Integer value1, Integer value2) {
-            addCriterion("subject_status_id between", value1, value2, "subjectStatusId");
+        public Criteria andSubjectStatusBetween(Integer value1, Integer value2) {
+            addCriterion("subject_status between", value1, value2, "subjectStatus");
             return (Criteria) this;
         }
 
-        public Criteria andSubjectStatusIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("subject_status_id not between", value1, value2, "subjectStatusId");
+        public Criteria andSubjectStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("subject_status not between", value1, value2, "subjectStatus");
             return (Criteria) this;
         }
 
-        public Criteria andSubjectResultIdIsNull() {
-            addCriterion("subject_result_id is null");
+        public Criteria andPmIdIsNull() {
+            addCriterion("pm_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andSubjectResultIdIsNotNull() {
-            addCriterion("subject_result_id is not null");
+        public Criteria andPmIdIsNotNull() {
+            addCriterion("pm_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSubjectResultIdEqualTo(Integer value) {
-            addCriterion("subject_result_id =", value, "subjectResultId");
+        public Criteria andPmIdEqualTo(Integer value) {
+            addCriterion("pm_id =", value, "pmId");
             return (Criteria) this;
         }
 
-        public Criteria andSubjectResultIdNotEqualTo(Integer value) {
-            addCriterion("subject_result_id <>", value, "subjectResultId");
+        public Criteria andPmIdNotEqualTo(Integer value) {
+            addCriterion("pm_id <>", value, "pmId");
             return (Criteria) this;
         }
 
-        public Criteria andSubjectResultIdGreaterThan(Integer value) {
-            addCriterion("subject_result_id >", value, "subjectResultId");
+        public Criteria andPmIdGreaterThan(Integer value) {
+            addCriterion("pm_id >", value, "pmId");
             return (Criteria) this;
         }
 
-        public Criteria andSubjectResultIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("subject_result_id >=", value, "subjectResultId");
+        public Criteria andPmIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("pm_id >=", value, "pmId");
             return (Criteria) this;
         }
 
-        public Criteria andSubjectResultIdLessThan(Integer value) {
-            addCriterion("subject_result_id <", value, "subjectResultId");
+        public Criteria andPmIdLessThan(Integer value) {
+            addCriterion("pm_id <", value, "pmId");
             return (Criteria) this;
         }
 
-        public Criteria andSubjectResultIdLessThanOrEqualTo(Integer value) {
-            addCriterion("subject_result_id <=", value, "subjectResultId");
+        public Criteria andPmIdLessThanOrEqualTo(Integer value) {
+            addCriterion("pm_id <=", value, "pmId");
             return (Criteria) this;
         }
 
-        public Criteria andSubjectResultIdIn(List<Integer> values) {
-            addCriterion("subject_result_id in", values, "subjectResultId");
+        public Criteria andPmIdIn(List<Integer> values) {
+            addCriterion("pm_id in", values, "pmId");
             return (Criteria) this;
         }
 
-        public Criteria andSubjectResultIdNotIn(List<Integer> values) {
-            addCriterion("subject_result_id not in", values, "subjectResultId");
+        public Criteria andPmIdNotIn(List<Integer> values) {
+            addCriterion("pm_id not in", values, "pmId");
             return (Criteria) this;
         }
 
-        public Criteria andSubjectResultIdBetween(Integer value1, Integer value2) {
-            addCriterion("subject_result_id between", value1, value2, "subjectResultId");
+        public Criteria andPmIdBetween(Integer value1, Integer value2) {
+            addCriterion("pm_id between", value1, value2, "pmId");
             return (Criteria) this;
         }
 
-        public Criteria andSubjectResultIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("subject_result_id not between", value1, value2, "subjectResultId");
+        public Criteria andPmIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("pm_id not between", value1, value2, "pmId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmSuggestIsNull() {
+            addCriterion("pm_suggest is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmSuggestIsNotNull() {
+            addCriterion("pm_suggest is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmSuggestEqualTo(String value) {
+            addCriterion("pm_suggest =", value, "pmSuggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmSuggestNotEqualTo(String value) {
+            addCriterion("pm_suggest <>", value, "pmSuggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmSuggestGreaterThan(String value) {
+            addCriterion("pm_suggest >", value, "pmSuggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmSuggestGreaterThanOrEqualTo(String value) {
+            addCriterion("pm_suggest >=", value, "pmSuggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmSuggestLessThan(String value) {
+            addCriterion("pm_suggest <", value, "pmSuggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmSuggestLessThanOrEqualTo(String value) {
+            addCriterion("pm_suggest <=", value, "pmSuggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmSuggestLike(String value) {
+            addCriterion("pm_suggest like", value, "pmSuggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmSuggestNotLike(String value) {
+            addCriterion("pm_suggest not like", value, "pmSuggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmSuggestIn(List<String> values) {
+            addCriterion("pm_suggest in", values, "pmSuggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmSuggestNotIn(List<String> values) {
+            addCriterion("pm_suggest not in", values, "pmSuggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmSuggestBetween(String value1, String value2) {
+            addCriterion("pm_suggest between", value1, value2, "pmSuggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmSuggestNotBetween(String value1, String value2) {
+            addCriterion("pm_suggest not between", value1, value2, "pmSuggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalIdIsNull() {
+            addCriterion("professional_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalIdIsNotNull() {
+            addCriterion("professional_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalIdEqualTo(Integer value) {
+            addCriterion("professional_id =", value, "professionalId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalIdNotEqualTo(Integer value) {
+            addCriterion("professional_id <>", value, "professionalId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalIdGreaterThan(Integer value) {
+            addCriterion("professional_id >", value, "professionalId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("professional_id >=", value, "professionalId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalIdLessThan(Integer value) {
+            addCriterion("professional_id <", value, "professionalId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalIdLessThanOrEqualTo(Integer value) {
+            addCriterion("professional_id <=", value, "professionalId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalIdIn(List<Integer> values) {
+            addCriterion("professional_id in", values, "professionalId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalIdNotIn(List<Integer> values) {
+            addCriterion("professional_id not in", values, "professionalId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalIdBetween(Integer value1, Integer value2) {
+            addCriterion("professional_id between", value1, value2, "professionalId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("professional_id not between", value1, value2, "professionalId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalSuggestIsNull() {
+            addCriterion("professional_suggest is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalSuggestIsNotNull() {
+            addCriterion("professional_suggest is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalSuggestEqualTo(String value) {
+            addCriterion("professional_suggest =", value, "professionalSuggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalSuggestNotEqualTo(String value) {
+            addCriterion("professional_suggest <>", value, "professionalSuggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalSuggestGreaterThan(String value) {
+            addCriterion("professional_suggest >", value, "professionalSuggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalSuggestGreaterThanOrEqualTo(String value) {
+            addCriterion("professional_suggest >=", value, "professionalSuggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalSuggestLessThan(String value) {
+            addCriterion("professional_suggest <", value, "professionalSuggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalSuggestLessThanOrEqualTo(String value) {
+            addCriterion("professional_suggest <=", value, "professionalSuggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalSuggestLike(String value) {
+            addCriterion("professional_suggest like", value, "professionalSuggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalSuggestNotLike(String value) {
+            addCriterion("professional_suggest not like", value, "professionalSuggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalSuggestIn(List<String> values) {
+            addCriterion("professional_suggest in", values, "professionalSuggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalSuggestNotIn(List<String> values) {
+            addCriterion("professional_suggest not in", values, "professionalSuggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalSuggestBetween(String value1, String value2) {
+            addCriterion("professional_suggest between", value1, value2, "professionalSuggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalSuggestNotBetween(String value1, String value2) {
+            addCriterion("professional_suggest not between", value1, value2, "professionalSuggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIdIsNull() {
+            addCriterion("org_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIdIsNotNull() {
+            addCriterion("org_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIdEqualTo(Integer value) {
+            addCriterion("org_id =", value, "orgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIdNotEqualTo(Integer value) {
+            addCriterion("org_id <>", value, "orgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIdGreaterThan(Integer value) {
+            addCriterion("org_id >", value, "orgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("org_id >=", value, "orgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIdLessThan(Integer value) {
+            addCriterion("org_id <", value, "orgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIdLessThanOrEqualTo(Integer value) {
+            addCriterion("org_id <=", value, "orgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIdIn(List<Integer> values) {
+            addCriterion("org_id in", values, "orgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIdNotIn(List<Integer> values) {
+            addCriterion("org_id not in", values, "orgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIdBetween(Integer value1, Integer value2) {
+            addCriterion("org_id between", value1, value2, "orgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("org_id not between", value1, value2, "orgId");
             return (Criteria) this;
         }
     }

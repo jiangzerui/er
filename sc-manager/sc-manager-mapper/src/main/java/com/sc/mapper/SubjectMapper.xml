@@ -8,8 +8,12 @@
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="project_id" jdbcType="INTEGER" property="projectId" />
-    <result column="subject_status_id" jdbcType="INTEGER" property="subjectStatusId" />
-    <result column="subject_result_id" jdbcType="INTEGER" property="subjectResultId" />
+    <result column="subject_status" jdbcType="INTEGER" property="subjectStatus" />
+    <result column="pm_id" jdbcType="INTEGER" property="pmId" />
+    <result column="pm_suggest" jdbcType="VARCHAR" property="pmSuggest" />
+    <result column="professional_id" jdbcType="INTEGER" property="professionalId" />
+    <result column="professional_suggest" jdbcType="VARCHAR" property="professionalSuggest" />
+    <result column="org_id" jdbcType="INTEGER" property="orgId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -70,8 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    subject_id, subject_code, subject_name, description, user_id, project_id, subject_status_id, 
-    subject_result_id
+    subject_id, subject_code, subject_name, description, user_id, project_id, subject_status, 
+    pm_id, pm_suggest, professional_id, professional_suggest, org_id
   </sql>
   <select id="selectByExample" parameterType="com.sc.pojo.SubjectExample" resultMap="BaseResultMap">
     select
@@ -106,10 +110,14 @@
   <insert id="insert" parameterType="com.sc.pojo.Subject">
     insert into subject (subject_id, subject_code, subject_name, 
       description, user_id, project_id, 
-      subject_status_id, subject_result_id)
+      subject_status, pm_id, pm_suggest, 
+      professional_id, professional_suggest, org_id
+      )
     values (#{subjectId,jdbcType=INTEGER}, #{subjectCode,jdbcType=VARCHAR}, #{subjectName,jdbcType=VARCHAR}, 
       #{description,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, 
-      #{subjectStatusId,jdbcType=INTEGER}, #{subjectResultId,jdbcType=INTEGER})
+      #{subjectStatus,jdbcType=INTEGER}, #{pmId,jdbcType=INTEGER}, #{pmSuggest,jdbcType=VARCHAR}, 
+      #{professionalId,jdbcType=INTEGER}, #{professionalSuggest,jdbcType=VARCHAR}, #{orgId,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.sc.pojo.Subject">
     insert into subject
@@ -132,11 +140,23 @@
       <if test="projectId != null">
         project_id,
       </if>
-      <if test="subjectStatusId != null">
-        subject_status_id,
+      <if test="subjectStatus != null">
+        subject_status,
       </if>
-      <if test="subjectResultId != null">
-        subject_result_id,
+      <if test="pmId != null">
+        pm_id,
+      </if>
+      <if test="pmSuggest != null">
+        pm_suggest,
+      </if>
+      <if test="professionalId != null">
+        professional_id,
+      </if>
+      <if test="professionalSuggest != null">
+        professional_suggest,
+      </if>
+      <if test="orgId != null">
+        org_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -158,11 +178,23 @@
       <if test="projectId != null">
         #{projectId,jdbcType=INTEGER},
       </if>
-      <if test="subjectStatusId != null">
-        #{subjectStatusId,jdbcType=INTEGER},
+      <if test="subjectStatus != null">
+        #{subjectStatus,jdbcType=INTEGER},
       </if>
-      <if test="subjectResultId != null">
-        #{subjectResultId,jdbcType=INTEGER},
+      <if test="pmId != null">
+        #{pmId,jdbcType=INTEGER},
+      </if>
+      <if test="pmSuggest != null">
+        #{pmSuggest,jdbcType=VARCHAR},
+      </if>
+      <if test="professionalId != null">
+        #{professionalId,jdbcType=INTEGER},
+      </if>
+      <if test="professionalSuggest != null">
+        #{professionalSuggest,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -193,11 +225,23 @@
       <if test="record.projectId != null">
         project_id = #{record.projectId,jdbcType=INTEGER},
       </if>
-      <if test="record.subjectStatusId != null">
-        subject_status_id = #{record.subjectStatusId,jdbcType=INTEGER},
+      <if test="record.subjectStatus != null">
+        subject_status = #{record.subjectStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.subjectResultId != null">
-        subject_result_id = #{record.subjectResultId,jdbcType=INTEGER},
+      <if test="record.pmId != null">
+        pm_id = #{record.pmId,jdbcType=INTEGER},
+      </if>
+      <if test="record.pmSuggest != null">
+        pm_suggest = #{record.pmSuggest,jdbcType=VARCHAR},
+      </if>
+      <if test="record.professionalId != null">
+        professional_id = #{record.professionalId,jdbcType=INTEGER},
+      </if>
+      <if test="record.professionalSuggest != null">
+        professional_suggest = #{record.professionalSuggest,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgId != null">
+        org_id = #{record.orgId,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -212,8 +256,12 @@
       description = #{record.description,jdbcType=VARCHAR},
       user_id = #{record.userId,jdbcType=INTEGER},
       project_id = #{record.projectId,jdbcType=INTEGER},
-      subject_status_id = #{record.subjectStatusId,jdbcType=INTEGER},
-      subject_result_id = #{record.subjectResultId,jdbcType=INTEGER}
+      subject_status = #{record.subjectStatus,jdbcType=INTEGER},
+      pm_id = #{record.pmId,jdbcType=INTEGER},
+      pm_suggest = #{record.pmSuggest,jdbcType=VARCHAR},
+      professional_id = #{record.professionalId,jdbcType=INTEGER},
+      professional_suggest = #{record.professionalSuggest,jdbcType=VARCHAR},
+      org_id = #{record.orgId,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -236,11 +284,23 @@
       <if test="projectId != null">
         project_id = #{projectId,jdbcType=INTEGER},
       </if>
-      <if test="subjectStatusId != null">
-        subject_status_id = #{subjectStatusId,jdbcType=INTEGER},
+      <if test="subjectStatus != null">
+        subject_status = #{subjectStatus,jdbcType=INTEGER},
       </if>
-      <if test="subjectResultId != null">
-        subject_result_id = #{subjectResultId,jdbcType=INTEGER},
+      <if test="pmId != null">
+        pm_id = #{pmId,jdbcType=INTEGER},
+      </if>
+      <if test="pmSuggest != null">
+        pm_suggest = #{pmSuggest,jdbcType=VARCHAR},
+      </if>
+      <if test="professionalId != null">
+        professional_id = #{professionalId,jdbcType=INTEGER},
+      </if>
+      <if test="professionalSuggest != null">
+        professional_suggest = #{professionalSuggest,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        org_id = #{orgId,jdbcType=INTEGER},
       </if>
     </set>
     where subject_id = #{subjectId,jdbcType=INTEGER}
@@ -252,8 +312,12 @@
       description = #{description,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER},
       project_id = #{projectId,jdbcType=INTEGER},
-      subject_status_id = #{subjectStatusId,jdbcType=INTEGER},
-      subject_result_id = #{subjectResultId,jdbcType=INTEGER}
+      subject_status = #{subjectStatus,jdbcType=INTEGER},
+      pm_id = #{pmId,jdbcType=INTEGER},
+      pm_suggest = #{pmSuggest,jdbcType=VARCHAR},
+      professional_id = #{professionalId,jdbcType=INTEGER},
+      professional_suggest = #{professionalSuggest,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=INTEGER}
     where subject_id = #{subjectId,jdbcType=INTEGER}
   </update>
 </mapper>
