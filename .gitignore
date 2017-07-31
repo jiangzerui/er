@@ -1,7 +1,5 @@
 
 *.MF
-pom.properties
 *.classes
 *.classpath
 target/*
-.DS_Store
