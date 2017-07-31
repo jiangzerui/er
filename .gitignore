@@ -8,9 +8,15 @@
 .settings/*
 *.component
 sc-portal/.classpath
+sc-portal/.classpath
 sc-sso/.classpath
 sc-sso/.project
 sc-zb/.classpath
 sc-zb/.project
 *.container
 *.name
+*.swp
+sc-portal/.settings/*
+sc-zb/.settings/*
+sc-sso/.settings/*
+pom.properties
