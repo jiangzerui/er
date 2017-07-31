@@ -16,6 +16,7 @@
 WebRoot/WEB-INF/lib/
 
 
+
 #忽略编译文件夹
 
 classes/
@@ -88,6 +89,7 @@ sc-common/.settings/org.eclipse.wst.common.project.facet.core.xml
 
 *.MF
 
+sc-common/target/*
 sc-common/.classpath
 
 *.component
@@ -95,7 +97,6 @@ sc-common/.classpath
 sc-common/target/classes/META-INF/maven/com.sc/sc-common/pom.properties
 
 sc-common/target/classes/META-INF/maven/com.sc/sc-common/pom.properties
-<<<<<<< HEAD
 
 sc-manager/sc-manager-web/target/m2e-wtp/web-resources/META-INF/maven/com.sc/sc-manager-web/pom.properties
 
@@ -104,9 +105,15 @@ sc-portal/target/m2e-wtp/web-resources/META-INF/maven/com.sc/sc-portal/pom.prope
 sc-sso/target/m2e-wtp/web-resources/META-INF/maven/com.sc/sc-sso/pom.properties
 
 sc-zb/target/m2e-wtp/web-resources/META-INF/maven/com.sc/sc-zb/pom.properties
-=======
+
+sc-zb/target/*
+sc-sso/target/*
+sc-portal/target/*
+sc-common/target/*
+sc-manager/target/*
 *.class
 *.MF
+sc-sso/target/*
 sc-manager/sc-manager-mapper/target/classes/META-INF/maven/com.sc/sc-manager-mapper/pom.properties
 sc-manager/sc-manager-pojo/target/classes/META-INF/maven/com.sc/sc-manager-pojo/pom.properties
 sc-manager/sc-manager-service/target/classes/META-INF/maven/com.sc/sc-manager-service/pom.properties
@@ -120,10 +127,4 @@ sc-common/.settings/org.eclipse.wst.common.project.facet.core.xml
 sc-manager/sc-manager-pojo/target/test-classes/com/sc/mapper/MenuMapper.xml
 sc-manager/sc-manager-pojo/target/test-classes/com/sc/test/GeneratorMybatis.class
 sc-manager/sc-manager-pojo/target/test-classes/com/sc/mapper/RoleMenuMapper.xml
->>>>>>> origin/master
 
-*.MF
-
-*.MF
-
-*.MF
