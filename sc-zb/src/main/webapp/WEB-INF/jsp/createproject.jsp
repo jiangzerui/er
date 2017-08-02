@@ -13,10 +13,12 @@
 	<link href="assets/css/font-awesome.css" rel="stylesheet" />
 	<link href="assets/css/style.css" rel="stylesheet" />
 	<link href="assets/css/zb/custom.css" rel="stylesheet" />
-	<script src="assets/js/jquery-1.11.1.js"></script>
+	<link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
+  	<script src="assets/js/jquery-1.11.1.js"></script>
     <script src="assets/js/bootstrap.js"></script>
 	<script src="assets/js/jquery.flexisel.js"></script>
 	<script src="assets/js/custom.js"></script>
+	<script src="assets/js/bootstrap-select.min.js"></script>
 <script type="text/javascript">
 	  function createProject(projectId){
 	  $.ajax({
@@ -33,29 +35,24 @@
 		});
 	  }
 	  
-	  function showorgnaization(){
-		 value =  $("#inlineRadio1").attr("checked","checked");
-		  $('#orgshow').append('<label for="org">请输入组织名称</label><input type="text" oninput="showorgbyname (event)" class="form-control">')
-	  }
-	  
 	  //通过输入查找组织信息，并选择
 	  function showorgbyname(event){
 		var oname = event.target.value;
-		 alert(oname)
-	    	var url = "http://localhost:10032/sc-zb/getorg/"+oname+".html"
+	      var url = "http://localhost:10032/sc-zb/getorg/findAll.html";
 		  $.ajax({
-			  	type: "POST",  
+			  	type: "GET",  
 	            url: url,
-	            data:{"oname":oname},
 	            dataType:"json",  
-	            success:function() { 
-				  //var orgname = data;
-				  //alert(data)
-				  $('#orglist').append('')
+	            success:function(result) { 
+	              $('#editable-select').html('');
+	              var data = result.data;
+	              $(data).each(function(n, i){
+	            	  $('#editable-select').append('<option value="'+n.orgnaizationCode+'">'+n.orgnaizationName+'</option>');
+	              });
 			  },
 			  error:function(){
 				  alert("初始化组织列表失败");
-				  $('#orglist').append('')
+				  $('#orglist').append('');
 				  $('#orglist').append('<div class="radio"><label><input type="radio" onclick="selectedOrgnaization()" value="" id="">'+orgname+'</label></div>')
 			  }
 		  });
@@ -92,13 +89,19 @@
             		<div class="form-group"><label for="exampleInputFile">项目图片</label><input type="file" id="picture"></div>
             		<div class="form-group"><label for="exampleInputFile">是否面向特定机构</label>
             			<label class="radio-inline">
-  						<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="yes" onclick="showorgnaization()"> 是
+  						<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="yes"> 是
 					</label>
 					<label class="radio-inline">
   						<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="no"> 否
 					</label>
             		</div>
-            		<div class="form-group" id="orgshow"></div>
+            		<div class="form-group" id="orgshow">
+            			<select id="basic2" class="show-tick form-control" tabindex="-98">
+            				<c:forEach items="${os}" var="o">
+	            				<option value="${o.orgnaizationCode}">${o.orgnaizationName}</option>	
+            				</c:forEach>
+				        </select>
+            		</div>
             		<div id="orglistdata"></div>
             		<div id="orglist"></div>
 		   </div>
@@ -108,5 +111,23 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+$(function(){
+    $('#basic2').selectpicker({
+      liveSearch: true,
+      maxOptions: 1
+    });
+	$("#orgshow").hide();
+	
+    $("input:radio").click(function(){
+    	var val=$(this).val();
+    	if(val=='yes'){
+    		$("#orgshow").show();
+    	}else{
+    		$("#orgshow").hide();
+    	}
+    });
+});
+</script>
 </body>
 </html>
