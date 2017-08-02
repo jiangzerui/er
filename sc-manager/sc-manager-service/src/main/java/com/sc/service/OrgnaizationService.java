@@ -11,4 +11,10 @@ public interface OrgnaizationService {
 	 * @return
 	 */
 	public List<Orgnaization> getByNameLike(String name);
+
+	/**
+	 * 通过项目 获取组织
+	 * @param projectCode
+	 */
+	public List<Orgnaization> findByProjectCode(String projectCode);
 }

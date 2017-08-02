@@ -11,11 +11,14 @@
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
-    	<link href="assets/css/zb/custom.css" rel="stylesheet" />
-    	<link href="assets/css/custom.css" rel="stylesheet" />
-	<script src="assets/js/jquery-1.11.1.js"></script>
+   	<link href="assets/css/zb/custom.css" rel="stylesheet" />
+   	<link href="assets/css/custom.css" rel="stylesheet" />
+	<link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
+  	<script src="assets/js/jquery-1.11.1.js"></script>
 	<script src="assets/js/custom.js"></script>
 	<script src="assets/js/jquery.flexisel.js"></script>
+	<script src="assets/js/bootstrap.js"></script>
+	<script src="assets/js/bootstrap-select.min.js"></script>
 </head>
 
 <script>
@@ -26,7 +29,6 @@
   })
   
    function applyBut(){
-	  alert('there')
     	  $.ajax({
    		   url: "http://localhost:10012/sc-sso/checkUserJsonp.html",
    		   type: "GET",
@@ -37,12 +39,7 @@
 					alert('该用户已经登录，可以申请项目')
 					$('#events').html('');
             			$('#portfolio').html('');
-            			$('#applyPro').append(
-            			'<form><div class="form-group"><input type="text" class="form-control" placeholder="课题名称"></div>'+
-            			'<label for="exampleInputEmail1">所属组织</label><select multiple class="form-control"><option>北航</option><option>南航</option><option>研究院</option></select></div>'+
-            			'<div class="form-group"><label for="exampleInputFile">选择申报文件</label><input type="file" id="exampleInputFile"></div>'+
-            			'<button type="submit" class="btn btn-default" onclick="createSubject()">Submit</button></form>'
-            			)
+            			$('#applyPro').show();
    			   }else{ //未登录的状态
    				   alert('该用户没有登录，请先登录')
    			   }
@@ -87,13 +84,13 @@
 <div id="about" class="about-info">
     <div class="about-grid">
         <div class="col-md-6 about-grid-left">
-            <img src="${project.projectLogoUrl}" alt=" " class="img-responsive" />
+            <img style="height:250px;" src="${project.projectLogoUrl}" alt=" " class="img-responsive" />
         </div>
         <div class="col-md-6 about-grid-right">
             <h2>${project.projectName}</h2>
             <p>${project.description}</p><br/>
             	<p>
-              <button type="button" id="dlButton" class="btn btn-primary">项目指南</button>
+              <button type="button" id="dlButton" class="btn btn-primary" onclick='location="${guide.guideUrl}"'>项目指南</button>
               <button type="button" id="applyButton" class="btn btn-success" onclick="applyBut()">项目申请</button>
             </p>
         </div>
@@ -101,7 +98,27 @@
     </div>
 </div>
 <hr />
-<div id="applyPro"></div>
+<div id="applyPro" class="container" style="display:none;">
+	<form action="saveSubject.html" method="post" enctype="multipart/form-data">
+		<div class="form-group">
+			<input type="hidden" name="projectId" value="${project.projectId}"/>
+			<input type="hidden" name="pmId" value="${project.userId}"/>
+			<input type="text" class="form-control" name="subjectName" placeholder="课题名称">
+			
+		</div>
+		<label for="exampleInputEmail1">所属组织</label>
+		<select id="basic2" class="show-tick form-control" tabindex="-98" multiple data-max-options="10" name="orgId">
+			<c:forEach items="${orgnaizations}" var="o">
+				<option value="${o.orgnaizationId}">${o.orgnaizationName}</option>
+			</c:forEach>
+		</select>
+		<div class="form-group">
+			<label for="exampleInputFile">选择申报文件</label>
+			<input type="file" id="exampleInputFile" name="sFile">
+		</div>
+		<button type="submit" class="btn btn-default" >Submit</button>
+    </form>
+</div>
 <c:if test="${project.projectType==1}">
 <div id="events" class="events">
     <div class="container">
@@ -168,8 +185,15 @@
         </div>
     </div>
 </div>
-
 <hr />
+<script type="text/javascript">
+$(function(){
+    $('#basic2').selectpicker({
+      liveSearch: true,
+      maxOptions: 1
+    });
+});
+</script>
 </body>
 </html>
 
