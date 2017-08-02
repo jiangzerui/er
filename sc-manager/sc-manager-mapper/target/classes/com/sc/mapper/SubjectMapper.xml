@@ -14,6 +14,7 @@
     <result column="professional_id" jdbcType="INTEGER" property="professionalId" />
     <result column="professional_suggest" jdbcType="VARCHAR" property="professionalSuggest" />
     <result column="org_id" jdbcType="INTEGER" property="orgId" />
+    <result column="subject_file" jdbcType="VARCHAR" property="subjectFile" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -75,7 +76,7 @@
   </sql>
   <sql id="Base_Column_List">
     subject_id, subject_code, subject_name, description, user_id, project_id, subject_status, 
-    pm_id, pm_suggest, professional_id, professional_suggest, org_id
+    pm_id, pm_suggest, professional_id, professional_suggest, org_id, subject_file
   </sql>
   <select id="selectByExample" parameterType="com.sc.pojo.SubjectExample" resultMap="BaseResultMap">
     select
@@ -111,13 +112,13 @@
     insert into subject (subject_id, subject_code, subject_name, 
       description, user_id, project_id, 
       subject_status, pm_id, pm_suggest, 
-      professional_id, professional_suggest, org_id
-      )
+      professional_id, professional_suggest, org_id, 
+      subject_file)
     values (#{subjectId,jdbcType=INTEGER}, #{subjectCode,jdbcType=VARCHAR}, #{subjectName,jdbcType=VARCHAR}, 
       #{description,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, 
       #{subjectStatus,jdbcType=INTEGER}, #{pmId,jdbcType=INTEGER}, #{pmSuggest,jdbcType=VARCHAR}, 
-      #{professionalId,jdbcType=INTEGER}, #{professionalSuggest,jdbcType=VARCHAR}, #{orgId,jdbcType=INTEGER}
-      )
+      #{professionalId,jdbcType=INTEGER}, #{professionalSuggest,jdbcType=VARCHAR}, #{orgId,jdbcType=INTEGER}, 
+      #{subjectFile,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sc.pojo.Subject">
     insert into subject
@@ -158,6 +159,9 @@
       <if test="orgId != null">
         org_id,
       </if>
+      <if test="subjectFile != null">
+        subject_file,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="subjectId != null">
@@ -195,6 +199,9 @@
       </if>
       <if test="orgId != null">
         #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="subjectFile != null">
+        #{subjectFile,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -243,6 +250,9 @@
       <if test="record.orgId != null">
         org_id = #{record.orgId,jdbcType=INTEGER},
       </if>
+      <if test="record.subjectFile != null">
+        subject_file = #{record.subjectFile,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -261,7 +271,8 @@
       pm_suggest = #{record.pmSuggest,jdbcType=VARCHAR},
       professional_id = #{record.professionalId,jdbcType=INTEGER},
       professional_suggest = #{record.professionalSuggest,jdbcType=VARCHAR},
-      org_id = #{record.orgId,jdbcType=INTEGER}
+      org_id = #{record.orgId,jdbcType=INTEGER},
+      subject_file = #{record.subjectFile,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -302,6 +313,9 @@
       <if test="orgId != null">
         org_id = #{orgId,jdbcType=INTEGER},
       </if>
+      <if test="subjectFile != null">
+        subject_file = #{subjectFile,jdbcType=VARCHAR},
+      </if>
     </set>
     where subject_id = #{subjectId,jdbcType=INTEGER}
   </update>
@@ -317,7 +331,8 @@
       pm_suggest = #{pmSuggest,jdbcType=VARCHAR},
       professional_id = #{professionalId,jdbcType=INTEGER},
       professional_suggest = #{professionalSuggest,jdbcType=VARCHAR},
-      org_id = #{orgId,jdbcType=INTEGER}
+      org_id = #{orgId,jdbcType=INTEGER},
+      subject_file = #{subjectFile,jdbcType=VARCHAR}
     where subject_id = #{subjectId,jdbcType=INTEGER}
   </update>
 </mapper>

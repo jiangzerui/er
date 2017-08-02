@@ -873,6 +873,76 @@ public class SubjectExample {
             addCriterion("org_id not between", value1, value2, "orgId");
             return (Criteria) this;
         }
+
+        public Criteria andSubjectFileIsNull() {
+            addCriterion("subject_file is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubjectFileIsNotNull() {
+            addCriterion("subject_file is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubjectFileEqualTo(String value) {
+            addCriterion("subject_file =", value, "subjectFile");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubjectFileNotEqualTo(String value) {
+            addCriterion("subject_file <>", value, "subjectFile");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubjectFileGreaterThan(String value) {
+            addCriterion("subject_file >", value, "subjectFile");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubjectFileGreaterThanOrEqualTo(String value) {
+            addCriterion("subject_file >=", value, "subjectFile");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubjectFileLessThan(String value) {
+            addCriterion("subject_file <", value, "subjectFile");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubjectFileLessThanOrEqualTo(String value) {
+            addCriterion("subject_file <=", value, "subjectFile");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubjectFileLike(String value) {
+            addCriterion("subject_file like", value, "subjectFile");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubjectFileNotLike(String value) {
+            addCriterion("subject_file not like", value, "subjectFile");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubjectFileIn(List<String> values) {
+            addCriterion("subject_file in", values, "subjectFile");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubjectFileNotIn(List<String> values) {
+            addCriterion("subject_file not in", values, "subjectFile");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubjectFileBetween(String value1, String value2) {
+            addCriterion("subject_file between", value1, value2, "subjectFile");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubjectFileNotBetween(String value1, String value2) {
+            addCriterion("subject_file not between", value1, value2, "subjectFile");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

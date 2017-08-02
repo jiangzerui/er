@@ -55,7 +55,7 @@
   
   function createSubject(projectId){
 	  $.ajax({
-		   url: "http://localhost:10022/sc-zb/createSubject/projectId/"+projectId,
+		   url: "http://localhost:10032/sc-zb/createSubject/projectId/"+projectId,
 		   type: "GET",
 		   dataType: 'jsonp',
 		   jsonp: 'jsoncallback',

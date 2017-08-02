@@ -25,6 +25,8 @@ public class Subject {
 
     private Integer orgId;
 
+    private String subjectFile;
+
     public Integer getSubjectId() {
         return subjectId;
     }
@@ -119,5 +121,13 @@ public class Subject {
 
     public void setOrgId(Integer orgId) {
         this.orgId = orgId;
+    }
+
+    public String getSubjectFile() {
+        return subjectFile;
+    }
+
+    public void setSubjectFile(String subjectFile) {
+        this.subjectFile = subjectFile == null ? null : subjectFile.trim();
     }
 }
