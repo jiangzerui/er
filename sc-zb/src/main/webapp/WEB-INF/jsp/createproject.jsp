@@ -79,26 +79,27 @@
     </div>
 </section>
 <jsp:include page="commons/slidemenu.jsp"></jsp:include>
+<form action="saveproject.html" method="post" enctype="multipart/form-data">
 <div id="page-inner">
     <div class="row" >
         <div class="col-md-12 col-sm-12 col-xs-12">
 		   <div class="col-md-5 col-md-offset-4">
-		   		<div class="form-group"><label for="exampleInputName2">项目名称</label><input type="text" class="form-control"></div>
-            		<div class="form-group"><label for="exampleInputName2">项目说明</label><textarea class="form-control" rows="6"></textarea></div>
-            		<div class="form-group"><label for="exampleInputFile">项目指南</label><input type="file" id="guide"></div>
-            		<div class="form-group"><label for="exampleInputFile">项目图片</label><input type="file" id="picture"></div>
+		   		<div class="form-group"><label for="exampleInputName2">项目名称</label><input name="projectName" type="text" class="form-control"></div>
+            		<div class="form-group"><label for="exampleInputName2">项目说明</label><textarea name="description" class="form-control" rows="6"></textarea></div>
+            		<div class="form-group"><label for="exampleInputFile">项目指南</label><input name="guideFile" type="file" id="guide"></div>
+            		<div class="form-group"><label for="exampleInputFile">项目图片</label><input type="file" name="logoFile" id="picture"></div>
             		<div class="form-group"><label for="exampleInputFile">是否面向特定机构</label>
             			<label class="radio-inline">
-  						<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="yes"> 是
+  						<input type="radio" name="hasOrg" id="inlineRadio1" value="yes"> 是
 					</label>
 					<label class="radio-inline">
-  						<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="no"> 否
+  						<input type="radio" name="hasOrg" id="inlineRadio2" value="no"> 否
 					</label>
             		</div>
             		<div class="form-group" id="orgshow">
-            			<select id="basic2" class="show-tick form-control" tabindex="-98">
+            			<select id="basic2" name="orgs" class="show-tick form-control" tabindex="-98" multiple data-max-options="10">
             				<c:forEach items="${os}" var="o">
-	            				<option value="${o.orgnaizationCode}">${o.orgnaizationName}</option>	
+	            				<option value="${o.orgnaizationId}">${o.orgnaizationName}</option>	
             				</c:forEach>
 				        </select>
             		</div>
@@ -106,16 +107,17 @@
             		<div id="orglist"></div>
 		   </div>
            <div class="col-md-4 col-md-offset-8">
-                <button type="button" class="btn btn-primary">发布项目</button>
+                <button type="submit" class="btn btn-primary">发布项目</button>
      	   </div>
         </div>
     </div>
 </div>
+</form>
 <script type="text/javascript">
 $(function(){
     $('#basic2').selectpicker({
       liveSearch: true,
-      maxOptions: 1
+      maxOptions: 10
     });
 	$("#orgshow").hide();
 	

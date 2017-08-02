@@ -3,7 +3,7 @@ package com.sc.pojo;
 public class ProjectOrgnaization {
     private Integer projectOrgnaizationId;
 
-    private Integer projectId;
+    private String projectCode;
 
     private Integer organizationId;
 
@@ -15,12 +15,12 @@ public class ProjectOrgnaization {
         this.projectOrgnaizationId = projectOrgnaizationId;
     }
 
-    public Integer getProjectId() {
-        return projectId;
+    public String getProjectCode() {
+        return projectCode;
     }
 
-    public void setProjectId(Integer projectId) {
-        this.projectId = projectId;
+    public void setProjectCode(String projectCode) {
+        this.projectCode = projectCode == null ? null : projectCode.trim();
     }
 
     public Integer getOrganizationId() {

@@ -2,6 +2,7 @@ package com.sc.service;
 
 import java.util.List;
 
+import com.sc.pojo.Guide;
 import com.sc.pojo.Project;
 
 public interface ProjectService {
@@ -18,5 +19,10 @@ public interface ProjectService {
 	 * @return
 	 */
 	public List<Project> getIndexProjectList();
+	
+	/**
+	 * 发布项目
+	 */
+	public void saveProject(Project project, Guide guide, String orgs);
 	
 }

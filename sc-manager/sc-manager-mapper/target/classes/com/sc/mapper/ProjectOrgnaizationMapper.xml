@@ -3,7 +3,7 @@
 <mapper namespace="com.sc.mapper.ProjectOrgnaizationMapper">
   <resultMap id="BaseResultMap" type="com.sc.pojo.ProjectOrgnaization">
     <id column="project_orgnaization_id" jdbcType="INTEGER" property="projectOrgnaizationId" />
-    <result column="project_id" jdbcType="INTEGER" property="projectId" />
+    <result column="project_code" jdbcType="VARCHAR" property="projectCode" />
     <result column="organization_id" jdbcType="INTEGER" property="organizationId" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -65,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    project_orgnaization_id, project_id, organization_id
+    project_orgnaization_id, project_code, organization_id
   </sql>
   <select id="selectByExample" parameterType="com.sc.pojo.ProjectOrgnaizationExample" resultMap="BaseResultMap">
     select
@@ -98,9 +98,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.sc.pojo.ProjectOrgnaization">
-    insert into project_orgnaization (project_orgnaization_id, project_id, 
+    insert into project_orgnaization (project_orgnaization_id, project_code, 
       organization_id)
-    values (#{projectOrgnaizationId,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, 
+    values (#{projectOrgnaizationId,jdbcType=INTEGER}, #{projectCode,jdbcType=VARCHAR}, 
       #{organizationId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.sc.pojo.ProjectOrgnaization">
@@ -109,8 +109,8 @@
       <if test="projectOrgnaizationId != null">
         project_orgnaization_id,
       </if>
-      <if test="projectId != null">
-        project_id,
+      <if test="projectCode != null">
+        project_code,
       </if>
       <if test="organizationId != null">
         organization_id,
@@ -120,8 +120,8 @@
       <if test="projectOrgnaizationId != null">
         #{projectOrgnaizationId,jdbcType=INTEGER},
       </if>
-      <if test="projectId != null">
-        #{projectId,jdbcType=INTEGER},
+      <if test="projectCode != null">
+        #{projectCode,jdbcType=VARCHAR},
       </if>
       <if test="organizationId != null">
         #{organizationId,jdbcType=INTEGER},
@@ -140,8 +140,8 @@
       <if test="record.projectOrgnaizationId != null">
         project_orgnaization_id = #{record.projectOrgnaizationId,jdbcType=INTEGER},
       </if>
-      <if test="record.projectId != null">
-        project_id = #{record.projectId,jdbcType=INTEGER},
+      <if test="record.projectCode != null">
+        project_code = #{record.projectCode,jdbcType=VARCHAR},
       </if>
       <if test="record.organizationId != null">
         organization_id = #{record.organizationId,jdbcType=INTEGER},
@@ -154,7 +154,7 @@
   <update id="updateByExample" parameterType="map">
     update project_orgnaization
     set project_orgnaization_id = #{record.projectOrgnaizationId,jdbcType=INTEGER},
-      project_id = #{record.projectId,jdbcType=INTEGER},
+      project_code = #{record.projectCode,jdbcType=VARCHAR},
       organization_id = #{record.organizationId,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -163,8 +163,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.sc.pojo.ProjectOrgnaization">
     update project_orgnaization
     <set>
-      <if test="projectId != null">
-        project_id = #{projectId,jdbcType=INTEGER},
+      <if test="projectCode != null">
+        project_code = #{projectCode,jdbcType=VARCHAR},
       </if>
       <if test="organizationId != null">
         organization_id = #{organizationId,jdbcType=INTEGER},
@@ -174,7 +174,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sc.pojo.ProjectOrgnaization">
     update project_orgnaization
-    set project_id = #{projectId,jdbcType=INTEGER},
+    set project_code = #{projectCode,jdbcType=VARCHAR},
       organization_id = #{organizationId,jdbcType=INTEGER}
     where project_orgnaization_id = #{projectOrgnaizationId,jdbcType=INTEGER}
   </update>
