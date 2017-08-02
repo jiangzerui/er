@@ -17,11 +17,12 @@ public class ProjectController {
 	}
 	
 	//通过组织名字查找组织
-	@RequestMapping("/getorg/{value}")
+	@RequestMapping("/getorg/{oname}")
 	public @ResponseBody String getOrgByName(@PathVariable String oname) {
 		//model.addAttribute("oname", "北京航空航天大学");
 		//String orgname = "北京航空航天大学"
 		//return JSONArray.toJSONString(orgname);
+		System.out.println("dddddddddddddddddddddddddddddd->"+ oname);
 		return "success";
 	}
 	

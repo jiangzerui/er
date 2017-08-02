@@ -40,17 +40,18 @@
 	  
 	  //通过输入查找组织信息，并选择
 	  function showorgbyname(event){
-		  
-		var value = event.target.value;
-	    	var url = "http://localhost:10032/sc-zb/getorg/"+value
+		var oname = event.target.value;
+		 alert(oname)
+	    	var url = "http://localhost:10032/sc-zb/getorg/"+oname+".html"
 		  $.ajax({
 			  	type: "POST",  
 	            url: url,
-	            data:{"oname":value},
+	            data:{"oname":oname},
 	            dataType:"json",  
-	            success:function(data) { 
-				  var orgname = data;
-				  alert('data-------->'+data)
+	            success:function() { 
+				  //var orgname = data;
+				  //alert(data)
+				  $('#orglist').append('')
 			  },
 			  error:function(){
 				  alert("初始化组织列表失败");
@@ -89,7 +90,7 @@
             		<div class="form-group"><label for="exampleInputName2">项目说明</label><textarea class="form-control" rows="6"></textarea></div>
             		<div class="form-group"><label for="exampleInputFile">项目指南</label><input type="file" id="guide"></div>
             		<div class="form-group"><label for="exampleInputFile">项目图片</label><input type="file" id="picture"></div>
-            		<div class="form-group"><label for="exampleInputFile">是否面向特定机构
+            		<div class="form-group"><label for="exampleInputFile">是否面向特定机构</label>
             			<label class="radio-inline">
   						<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="yes" onclick="showorgnaization()"> 是
 					</label>
