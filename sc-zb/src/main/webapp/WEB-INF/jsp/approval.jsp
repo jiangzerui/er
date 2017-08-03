@@ -136,7 +136,11 @@
                 <h4 class="modal-title" id="myModalLabel">评审</h4>
             </div>
             <div class="modal-body">
-            		
+            		<select id="basic2" name="orgs" class="show-tick form-control" tabindex="-98" multiple data-max-options="10">
+            				<c:forEach items="${os}" var="o">
+	            				<option value="${o.orgnaizationId}">${o.orgnaizationName}</option>	
+            				</c:forEach>
+			    </select>
 
 				    <div class="form-group">
 				      <label for="textInput">备注</label>

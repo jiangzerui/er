@@ -131,29 +131,14 @@
                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
             </div>
             <div class="modal-body">
-                <!--for all role-->
-                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Tooltip on left">课题详情</button>
-
-                <!--for user role and status in 立项-->
                 <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">阶段成果报告</button>
-
-				<!--for project manager role-->
-                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">课题分配</button>
-                <!--for project manager role-->
-                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">课题审批</button>
-				 <!--for project manager role-->
-                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">课题关闭</button>
-                
-                 <!--for professional role-->
-                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">课题评审</button>
-                
-                 <!--for orgnaization role-->
-                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">课题核对</button>
+                <div class="form-group"><label for="exampleInputFile">上传阶段成果</label><input name="guideFile" type="file" id="guide"></div>
+                <!--for all role-->
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">提交报告</button>
             </div>
         </div>
     </div>
