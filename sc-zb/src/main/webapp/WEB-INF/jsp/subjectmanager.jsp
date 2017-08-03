@@ -36,48 +36,7 @@
 </section>
 <jsp:include page="commons/slidemenu.jsp"></jsp:include>
 <div id="page-inner">
-    <div class="row">
-        <div class="col-md-3 col-sm-6 col-xs-6">
-            <div class="panel panel-back noti-box">
-                <span class="icon-box bg-color-red set-icon">
-                    <i class="fa fa-envelope-o"></i>
-                </span>
-                <div class="text-box" >
-                    <p class="text-muted">课题申请</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-6">
-            <div class="panel panel-back noti-box">
-                <span class="icon-box bg-color-green set-icon">
-                    <i class="fa fa-bars"></i>
-                </span>
-                <div class="text-box" >
-                    <p class="text-muted">课题审批</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-6">
-            <div class="panel panel-back noti-box">
-                <span class="icon-box bg-color-blue set-icon">
-                    <i class="fa fa-bell-o"></i>
-                </span>
-                <div class="text-box" >
-                    <p class="text-muted">课题立项</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-6">
-            <div class="panel panel-back noti-box">
-                <span class="icon-box bg-color-brown set-icon">
-                    <i class="fa fa-rocket"></i>
-                </span>
-                <div class="text-box" >
-                    <p class="text-muted">课题结项</p>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!--选择条件按照项目-->
 
     <hr />
@@ -173,13 +132,23 @@
             </div>
             <div class="modal-body">
                 <!--for all role-->
-                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Tooltip on left">详情</button>
+                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Tooltip on left">课题详情</button>
 
                 <!--for user role and status in 立项-->
-                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">成果提交</button>
+                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">阶段成果报告</button>
 
+				<!--for project manager role-->
+                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">课题分配</button>
                 <!--for project manager role-->
-                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">审批</button>
+                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">课题审批</button>
+				 <!--for project manager role-->
+                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">课题关闭</button>
+                
+                 <!--for professional role-->
+                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">课题评审</button>
+                
+                 <!--for orgnaization role-->
+                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">课题核对</button>
 
             </div>
             <div class="modal-footer">
