@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -70,39 +71,21 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <c:forEach items="${subjects}" var="s" varStatus="status">
                             <tr>
-                                <td>1</td>
-                                <td>双创平台</td>
-                                <td>动力基金</td>
-                                <td>张三</td>
-                                <td>2017年7月27日</td>
+                                <td>${status.index+1}</td>
+                                <td>${s.subjectName}</td>
+                                <td>${s.projectName}</td>
+                                <td>${s.userName}</td>
+                                <td>
+                                	<fmt:formatDate value="${s.createTime}" pattern="yyyy年MM月dd日"/>
+                                </td>
                                  <td>
                                 		<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" >通过</button>
                                 		<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" >不通过</button>
                                 	</td>
                             </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>双创平台</td>
-                                <td>动力基金</td>
-                                <td>李四</td>
-                                <td>2017年7月27日</td>
-                                <td>
-                                		<button type="button" class="btn btn-primary btn-sm" >通过</button>
-                                		<button type="button" class="btn btn-primary btn-sm" >不通过</button>
-                                	</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>双创平台</td>
-                                <td>动力基金</td>
-                                <td>小明</td>
-                                <td>2017年7月27日</td>
-                                <td>
-                                		<button type="button" class="btn btn-primary btn-sm"  >通过</button>
-                                		<button type="button" class="btn btn-primary btn-sm"  >不通过</button>
-                                </td>
-                            </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>
@@ -115,18 +98,35 @@
         <div class="col-sm-6"></div>
         <div class="col-sm-6">
             <nav aria-label="Page navigation">
-                <ul class="pagination">
-                    <li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+                <ul id="bottom_page" class="pagination">
+                    
                 </ul>
             </nav>
         </div>
     </div>
 </div>
+<script src="assets/js/bootstrap-paginator.js"></script>
+<script src="assets/js/qunit-1.11.0.js"></script>
+<script type="text/javascript">
+
+    $(function(){
+        test("", function(){
+            var element = $('#bottom_page');
+            var options = {
+                bootstrapMajorVersion:3,
+                currentPage: ${pageInfo.pageNum},
+                numberOfPages: ${pageInfo.pageSize},
+                totalPages:${pageInfo.pages},
+                shouldShowPage:true,//是否显示该按钮
+                //点击事件
+                onPageClicked: function (event, originalEvent, type, page) {
+                    location.href = "cb.html?page=" + page;
+                }
+            }
+            element.bootstrapPaginator(options);
+        })
+    });
+
+</script>
 </body>
 </html>

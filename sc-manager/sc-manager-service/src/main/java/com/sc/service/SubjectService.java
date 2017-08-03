@@ -1,5 +1,8 @@
 package com.sc.service;
 
+import java.util.List;
+
+import com.github.pagehelper.PageInfo;
 import com.sc.pojo.Subject;
 
 public interface SubjectService {
@@ -9,5 +12,12 @@ public interface SubjectService {
 	 * @param subject
 	 */
 	public void saveSubject(Subject subject);
+
+	/**
+	 * 通过组织用户id  查询可审批的课题列表
+	 * @param userId
+	 * @return
+	 */
+	public PageInfo<Subject> findSubjectByOrgUserId(Integer userId, int page);
 	
 }

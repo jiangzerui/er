@@ -81,7 +81,7 @@
 						<table tableName="role_menu"></table>
 						<table tableName="subject"></table>
 						-->
-						<table tableName="project_orgnaization"></table>
+						<table tableName="project"></table>
 												
 					</context>
 

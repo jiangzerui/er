@@ -1,5 +1,7 @@
 package com.sc.pojo;
 
+import java.util.Date;
+
 public class Subject {
     private Integer subjectId;
 
@@ -26,6 +28,12 @@ public class Subject {
     private Integer orgId;
 
     private String subjectFile;
+
+    private String userName;
+
+    private Date createTime;
+
+    private String projectName;
 
     public Integer getSubjectId() {
         return subjectId;
@@ -129,5 +137,29 @@ public class Subject {
 
     public void setSubjectFile(String subjectFile) {
         this.subjectFile = subjectFile == null ? null : subjectFile.trim();
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName == null ? null : userName.trim();
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName == null ? null : projectName.trim();
     }
 }

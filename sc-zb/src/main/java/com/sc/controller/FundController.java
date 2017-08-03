@@ -2,6 +2,7 @@ package com.sc.controller;
 
 
 import java.io.File;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -107,6 +108,8 @@ public class FundController {
 		subject.setSubjectFile(filePath);
 		subject.setSubjectStatus(SUBJECT_STATUS_SENDED);
 		subject.setUserId(user.getUserId());
+		subject.setUserName(user.getName());
+		subject.setCreateTime(new Date());
 		subjectService.saveSubject(subject);
 		return "redirect:index.html";
 	}
