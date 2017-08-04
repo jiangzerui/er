@@ -17,8 +17,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.github.pagehelper.PageInfo;
 import com.sc.common.pojo.ScResult;
 import com.sc.common.utils.HttpClientUtils;
+import com.sc.mapper.ProfessionClassDicMapper;
+import com.sc.pojo.ProfessionClassDic;
+import com.sc.pojo.Professor;
 import com.sc.pojo.Subject;
+import com.sc.pojo.SubjectProfessional;
 import com.sc.pojo.User;
+import com.sc.service.ProfessionClassDicService;
+import com.sc.service.ProfessorService;
+import com.sc.service.SubjectProfessionalService;
 import com.sc.service.SubjectService;
 import com.sc.utils.CookieUtils;
 
@@ -27,6 +34,12 @@ public class SubjectManagerController {
 	
 	@Autowired
 	private SubjectService subjectService;
+	@Autowired
+	private ProfessionClassDicService pcdService;
+	@Autowired
+	private ProfessorService professorService;
+	@Autowired
+	private SubjectProfessionalService spService;
 	
 	@Value("${SSO}")
 	private String SSO;
@@ -60,7 +73,7 @@ public class SubjectManagerController {
 		String resp = HttpClientUtils.doGet(SSO+"/checkUser.html", param);
 		ScResult result = ScResult.formatToPojo(resp, User.class);
 		User user = (User) result.getData();
-		if(!user.getRoleCode().equals("10002")){
+		if(user==null || !user.getRoleCode().equals("10002")){
 			return "redirect:"+SSO+"/toLogin.html";
 		}
 		//通过userId 查询该用户可以审阅的课题列表
@@ -72,8 +85,49 @@ public class SubjectManagerController {
 	
 	//项目经理分配课题2
 	@RequestMapping("/as")
-	public String allocationSub(Model model){
+	public String allocationSub(HttpServletRequest request, Model model, @RequestParam(name="page", required=false, defaultValue="1") int page){
+		//查询当前组织可核对的课题列表  带分页
+		//验证用户权限
+		String ticket = CookieUtils.getCookieValue(request, TICKET_COOKIE_NAME);
+		if(ticket==null){
+			return "redirect:"+SSO+"/toLogin.html";
+		}
+		//发送请求 给checkUser,获取当前用户，得到当前登录用户或未登录状态
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("ticket", ticket);
+		String resp = HttpClientUtils.doGet(SSO+"/checkUser.html", param);
+		ScResult result = ScResult.formatToPojo(resp, User.class);
+		User user = (User) result.getData();
+		if(user==null || !user.getRoleCode().equals("10003")){
+			return "redirect:"+SSO+"/toLogin.html";
+		}
+		//获取课题列表 在页面中显示
+		PageInfo<Subject> pageInfo = subjectService.findSubjectByPmUserId(user.getUserId(), page);
+		model.addAttribute("subjects", pageInfo.getList());
+		model.addAttribute("pageInfo", pageInfo);
 		return "allocation";
+	}
+	
+	@RequestMapping("/getModalBoxData")
+	public String getModalBoxData(Model model, int subjectId, String code, @RequestParam(name="page", required=false, defaultValue="1") int page){
+		//获取专家类别列表
+		List<ProfessionClassDic> pcs = pcdService.getAll();
+		model.addAttribute("professorClasses", pcs);
+		//获取专家列表带分页
+		PageInfo<Professor> modalPageInfo = professorService.findByClassAndPage(code, page);
+		model.addAttribute("modalPageInfo", modalPageInfo);
+		model.addAttribute("professors", modalPageInfo.getList());
+		model.addAttribute("code", code);
+		//查询当前课题 已经分配给了哪些专家
+		List<SubjectProfessional> spList = spService.findBySubjectId(subjectId);
+		model.addAttribute("spList", spList);
+		return "modalBox";
+	}
+	
+	@RequestMapping("/changeProfessorAllocation")
+	public ScResult changeProfessorAllocation(int subjectId,int professorId,boolean isChecked){
+		spService.changeSubjectProfessionalAllocation(subjectId, professorId, isChecked);
+		return ScResult.ok();
 	}
 	
 	//专家评审3

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -70,36 +71,20 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <c:forEach items="${subjects}" var="s" varStatus="status">
                             <tr>
-                                <td>1</td>
-                                <td>双创平台</td>
-                                <td>动力基金</td>
-                                <td>张三</td>
-                                <td>2017年7月27日</td>
-                                 <td>
-                                		<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">分配</button>
-                                	</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>双创平台</td>
-                                <td>动力基金</td>
-                                <td>李四</td>
-                                <td>2017年7月27日</td>
+                                <td>${status.index+1}</td>
+                                <td>${s.subjectName}</td>
+                                <td>${s.projectName}</td>
+                                <td>${s.userName}</td>
                                 <td>
-                                		<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" >分配</button>
-                                	</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>双创平台</td>
-                                <td>动力基金</td>
-                                <td>小明</td>
-                                <td>2017年7月27日</td>
+                                	<fmt:formatDate value="${s.createTime}" pattern="yyyy年MM月dd日"/>
+                                </td>
                                 <td>
-                                		<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" >分配</button>
+                                	<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" onclick="fenpei('${s.subjectId}')">分配</button>
                                 </td>
                             </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>
@@ -112,14 +97,7 @@
         <div class="col-sm-6"></div>
         <div class="col-sm-6">
             <nav aria-label="Page navigation">
-                <ul class="pagination">
-                    <li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+                <ul id="bottom_page"  class="pagination">
                 </ul>
             </nav>
         </div>
@@ -135,49 +113,9 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
             </div>
-            <div class="modal-body">
+            <input id="targetSubjectId" type="hidden"/>
+            <div id="modal-body" class="modal-body">
 			
-			
-			<!-- 专家类别下拉列表 -->
-			
-			<div class="dropdown">
-				<button class="btn dropdown-toggle" data-toggle="dropdown"> 专家类别</button>
-				<ul class="dropdown-menu" >
-				<li><a role="menuitem" tabindex="-1" href="#">发动机</a></li>
-				<li><a role="menuitem" tabindex="-1" href="#">计算机软件</a></li>
-				<li><a role="menuitem" tabindex="-1" href="#">计算机网络</a></li>
-				</ul>
-			</div>
-			<!-- end -->
-			<!-- 专家列表 -->
- 				<div class="row" ><p/>
-       				<div class="col-md-12 col-sm-12 col-xs-12">
-            			<div class="panel panel-default">
-                		<div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-hover" id="dataTables-example">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>选择</th>
-                                <th>专家姓名</th>
-                                <th>专业</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td><input type="checkbox" value=""></td>
-                                <td>小明</td>
-                                <td>计算机软件</td>
-	                        </tr>
-	                        </tbody>
-		                     </table>
-		                    </div>
-		                </div>
-		            </div>
-		        </div>
-		    </div>
 		<!-- 列表end -->
             </div>
             <div class="modal-footer">
@@ -187,5 +125,52 @@
         </div>
     </div>
 </div>
+<script src="assets/js/bootstrap-paginator.js"></script>
+<script src="assets/js/qunit-1.11.0.js"></script>
+<script type="text/javascript">
+
+    $(function(){
+        test("", function(){
+            var element = $('#bottom_page');
+            var options = {
+                bootstrapMajorVersion:3,
+                currentPage: ${pageInfo.pageNum},
+                numberOfPages: ${pageInfo.pageSize},
+                totalPages:${pageInfo.pages},
+                shouldShowPage:true,//是否显示该按钮
+                //点击事件
+                onPageClicked: function (event, originalEvent, type, page) {
+                    location.href = "cb.html?page=" + page;
+                }
+            }
+            element.bootstrapPaginator(options);
+        })
+    });
+
+    function getModalData(pcCode, page){
+    	//发送ajax请求  加载数据
+    	var subjectId = $("#targetSubjectId").val();
+    	if(pcCode){
+	    	$("#modal-body").load("getModalBoxData.html", {subjectId:subjectId, code:pcCode, page:page});
+    	}else{
+    		$("#modal-body").load("getModalBoxData.html", {subjectId:subjectId, page:page});
+    	}
+    }
+    
+    function selectCheckBox(event){
+    	var subjectId = $("#targetSubjectId").val();
+    	var professorId = $(event.target).val();
+    	var isChecked = $(event.target).is(':checked');
+    	$.post("changeProfessorAllocation.html", {subjectId: subjectId, professorId: professorId, isChecked: isChecked});
+    	
+    }
+    
+    function fenpei(subjectId){
+    	$("#targetSubjectId").val(subjectId);
+    	//加载模态框中的数据
+    	getModalData('', 1);
+    }
+    
+</script>
 </body>
 </html>

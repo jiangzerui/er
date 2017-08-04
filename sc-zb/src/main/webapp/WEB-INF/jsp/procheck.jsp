@@ -81,8 +81,8 @@
                                 	<fmt:formatDate value="${s.createTime}" pattern="yyyy年MM月dd日"/>
                                 </td>
                                  <td>
-                                		<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" >通过</button>
-                                		<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" >不通过</button>
+                                		<button onclick="location='changeSubjectStatus.html?subjectStatus=220&subjectId=${s.subjectId}'" type="button" class="btn btn-primary btn-sm" data-toggle="modal" >通过</button>
+                                		<button onclick="location='changeSubjectStatus.html?subjectStatus=410&subjectId=${s.subjectId}'"  type="button" class="btn btn-primary btn-sm" data-toggle="modal" >不通过</button>
                                 	</td>
                             </tr>
                             </c:forEach>

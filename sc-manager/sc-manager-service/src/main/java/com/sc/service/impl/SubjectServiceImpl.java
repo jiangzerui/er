@@ -31,7 +31,20 @@ public class SubjectServiceImpl implements SubjectService {
 	
 	@Value("${PAGE_SIZE}")
 	private int pagesize;
-	
+	@Value("${SUBJECT_STATUS_SENDED}")
+	private int SUBJECT_STATUS_SENDED;
+	@Value("${SUBJECT_STATUS_CHECKING}")
+	private int SUBJECT_STATUS_CHECKING;
+	@Value("${SUBJECT_STATUS_ORGNAIZATION_CHECKING}")
+	private int SUBJECT_STATUS_ORGNAIZATION_CHECKING;
+	@Value("${SUBJECT_STATUS_ORGNAIZATION_PASSED}")
+	private int SUBJECT_STATUS_ORGNAIZATION_PASSED;
+	@Value("${SUBJECT_STATUS_APPROVALED}")
+	private int SUBJECT_STATUS_APPROVALED;
+	@Value("${SUBJECT_STATUS_DONE}")
+	private int SUBJECT_STATUS_DONE;
+	@Value("${SUBJECT_STATUS_UNPASSED}")
+	private int SUBJECT_STATUS_UNPASSED;
 	@Override
 	public void saveSubject(Subject subject) {
 		Project p = projectMapper.selectByPrimaryKey(subject.getProjectId());
@@ -53,7 +66,7 @@ public class SubjectServiceImpl implements SubjectService {
 			SubjectExample e2 = new SubjectExample();
 			com.sc.pojo.SubjectExample.Criteria c2 = e2.createCriteria();
 			c2.andOrgIdEqualTo(orgId);
-			c2.andSubjectStatusEqualTo(1);
+			c2.andSubjectStatusEqualTo(SUBJECT_STATUS_SENDED);
 			PageHelper.startPage(page, pagesize);
 			List<Subject> subjects = subjectMapper.selectByExample(e2);
 			PageInfo<Subject> pageInfo = new PageInfo<Subject>(subjects);
@@ -61,6 +74,24 @@ public class SubjectServiceImpl implements SubjectService {
 		}else{
 			return null;
 		}
+	}
+
+	@Override
+	public void updateSubjectStatus(Subject subject) {
+		subjectMapper.updateByPrimaryKeySelective(subject);
+	}
+
+	@Override
+	public PageInfo<Subject> findSubjectByPmUserId(Integer userId, int page) {
+		//通过pmid，查询可审核的课题列表
+		SubjectExample e2 = new SubjectExample();
+		com.sc.pojo.SubjectExample.Criteria c2 = e2.createCriteria();
+		c2.andPmIdEqualTo(userId);
+		c2.andSubjectStatusEqualTo(SUBJECT_STATUS_ORGNAIZATION_PASSED);
+		PageHelper.startPage(page, pagesize);
+		List<Subject> subjects = subjectMapper.selectByExample(e2);
+		PageInfo<Subject> pageInfo = new PageInfo<Subject>(subjects);
+		return pageInfo;
 	}
 
 }

@@ -81,7 +81,7 @@ public class ProjectController {
 		String resp = HttpClientUtils.doGet(SSO+"/checkUser.html", param);
 		ScResult result = ScResult.formatToPojo(resp, User.class);
 		User user = (User) result.getData();
-		if(!user.getRoleCode().equals("10003")){
+		if(user==null || !user.getRoleCode().equals("10003")){
 			return "redirect:"+SSO+"/toLogin.html";
 		}
 		//把文件存入相应目录中

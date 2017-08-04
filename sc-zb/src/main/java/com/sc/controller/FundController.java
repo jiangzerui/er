@@ -62,6 +62,18 @@ public class FundController {
 	
 	@Value("${SUBJECT_STATUS_SENDED}")
 	private int SUBJECT_STATUS_SENDED;
+	@Value("${SUBJECT_STATUS_CHECKING}")
+	private int SUBJECT_STATUS_CHECKING;
+	@Value("${SUBJECT_STATUS_ORGNAIZATION_CHECKING}")
+	private int SUBJECT_STATUS_ORGNAIZATION_CHECKING;
+	@Value("${SUBJECT_STATUS_ORGNAIZATION_PASSED}")
+	private int SUBJECT_STATUS_ORGNAIZATION_PASSED;
+	@Value("${SUBJECT_STATUS_APPROVALED}")
+	private int SUBJECT_STATUS_APPROVALED;
+	@Value("${SUBJECT_STATUS_DONE}")
+	private int SUBJECT_STATUS_DONE;
+	@Value("${SUBJECT_STATUS_UNPASSED}")
+	private int SUBJECT_STATUS_UNPASSED;
 	
 	@RequestMapping("/fund")
 	public String index(int projectId, Model model){
@@ -80,6 +92,12 @@ public class FundController {
 		return "fund";
 	}
 	
+	@RequestMapping("/changeSubjectStatus")
+	public String changeSubjectStatus(Subject subject){
+		subjectService.updateSubjectStatus(subject);
+		return "redirect:cb.html";
+	}
+	
 	@RequestMapping("/saveSubject")
 	public String saveSubject(HttpServletRequest request, Subject subject,@RequestParam("sFile") CommonsMultipartFile file)throws Exception{
 		//验证用户权限
@@ -93,7 +111,7 @@ public class FundController {
 		String resp = HttpClientUtils.doGet(SSO+"/checkUser.html", param);
 		ScResult result = ScResult.formatToPojo(resp, User.class);
 		User user = (User) result.getData();
-		if(!user.getRoleCode().equals("10001")){
+		if(user==null || !user.getRoleCode().equals("10001")){
 			return "redirect:"+SSO+"/toLogin.html";
 		}
 		//保存申报文件
