@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageInfo;
 import com.sc.mapper.SubjectProfessionalMapper;
+import com.sc.pojo.Subject;
 import com.sc.pojo.SubjectProfessional;
 import com.sc.pojo.SubjectProfessionalExample;
 import com.sc.pojo.SubjectProfessionalExample.Criteria;
@@ -38,6 +40,16 @@ public class SubjectProfessionalServiceImpl implements SubjectProfessionalServic
 		Criteria c = example.createCriteria();
 		c.andSubjectIdEqualTo(subjectId);
 		return spMapper.selectByExample(example);
+	}
+
+	@Override
+	public void updateReviewSubject(SubjectProfessional subjectProfessional) {
+		SubjectProfessionalExample example = new SubjectProfessionalExample();
+		Criteria c = example.createCriteria();
+		c.andUserProfessionalIdEqualTo(subjectProfessional.getUserProfessionalId())
+			.andSubjectIdEqualTo(subjectProfessional.getSubjectId());
+		spMapper.updateByExampleSelective(subjectProfessional, example);
+		
 	}
 
 }

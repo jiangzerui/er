@@ -18,11 +18,14 @@ import com.github.pagehelper.PageInfo;
 import com.sc.common.pojo.ScResult;
 import com.sc.common.utils.HttpClientUtils;
 import com.sc.mapper.ProfessionClassDicMapper;
+import com.sc.mapper.SubjectMapper;
+import com.sc.pojo.Orgnaization;
 import com.sc.pojo.ProfessionClassDic;
 import com.sc.pojo.Professor;
 import com.sc.pojo.Subject;
 import com.sc.pojo.SubjectProfessional;
 import com.sc.pojo.User;
+import com.sc.service.OrgnaizationService;
 import com.sc.service.ProfessionClassDicService;
 import com.sc.service.ProfessorService;
 import com.sc.service.SubjectProfessionalService;
@@ -40,6 +43,8 @@ public class SubjectManagerController {
 	private ProfessorService professorService;
 	@Autowired
 	private SubjectProfessionalService spService;
+	@Autowired
+	private OrgnaizationService oService;
 	
 	@Value("${SSO}")
 	private String SSO;
@@ -132,9 +137,65 @@ public class SubjectManagerController {
 	
 	//专家评审3
 	@RequestMapping("/cs")
-	public String checkSub(Model model){
+	public String checkSub(HttpServletRequest request, Model model, @RequestParam(name="page", required=false, defaultValue="1") int page){
+		//查询当前组织可核对的课题列表  带分页
+		//验证用户权限
+		String ticket = CookieUtils.getCookieValue(request, TICKET_COOKIE_NAME);
+		if(ticket==null){
+			return "redirect:"+SSO+"/toLogin.html";
+		}
+		//发送请求 给checkUser,获取当前用户，得到当前登录用户或未登录状态
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("ticket", ticket);
+		String resp = HttpClientUtils.doGet(SSO+"/checkUser.html", param);
+		ScResult result = ScResult.formatToPojo(resp, User.class);
+		User user = (User) result.getData();
+		if(user==null || !user.getRoleCode().equals("10004")){
+			return "redirect:"+SSO+"/toLogin.html";
+		}
+		//通过userid 查找项目经理分配给我的所有课题列表
+		PageInfo<Subject> pageInfo = subjectService.findUnReviewedSubjectsByProfessionalId(user.getUserId(), page);
+		model.addAttribute("subjects", pageInfo.getList());
+		model.addAttribute("pageInfo", pageInfo);
 		return "checksubject";
 	}
+	
+	@RequestMapping("/getCheckModalBoxData")
+	public String getCheckModalBoxData(Model model, int subjectId){
+		//查询当前选中的课题信息
+		Subject subject = subjectService.findSubjectById(subjectId);
+		model.addAttribute("subject", subject);
+		//查询该课题所属组织信息
+		int orgId = subject.getOrgId();
+		Orgnaization org = oService.findById(orgId);
+		model.addAttribute("org", org);
+		return "checkModalBox";
+	}
+	
+	@RequestMapping("/reviewSubject")
+	public String reviewSubject(HttpServletRequest request, SubjectProfessional subjectProfessional){
+		//查询当前组织可核对的课题列表  带分页
+		//验证用户权限
+		String ticket = CookieUtils.getCookieValue(request, TICKET_COOKIE_NAME);
+		if(ticket==null){
+			return "redirect:"+SSO+"/toLogin.html";
+		}
+		//发送请求 给checkUser,获取当前用户，得到当前登录用户或未登录状态
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("ticket", ticket);
+		String resp = HttpClientUtils.doGet(SSO+"/checkUser.html", param);
+		ScResult result = ScResult.formatToPojo(resp, User.class);
+		User user = (User) result.getData();
+		if(user==null || !user.getRoleCode().equals("10004")){
+			return "redirect:"+SSO+"/toLogin.html";
+		}
+		subjectProfessional.setUserProfessionalId(user.getUserId());
+		subjectProfessional.setReviewed(1);
+		//更新subjectProfessional表
+		spService.updateReviewSubject(subjectProfessional);
+		return "redirect:cs.html";
+	}
+	
 	
 	//课题立项4
 	@RequestMapping("/ps")

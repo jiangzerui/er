@@ -5,6 +5,9 @@
     <id column="subject_professional_id" jdbcType="INTEGER" property="subjectProfessionalId" />
     <result column="subject_id" jdbcType="INTEGER" property="subjectId" />
     <result column="user_professional_id" jdbcType="INTEGER" property="userProfessionalId" />
+    <result column="score" jdbcType="DOUBLE" property="score" />
+    <result column="suggest" jdbcType="VARCHAR" property="suggest" />
+    <result column="reviewed" jdbcType="INTEGER" property="reviewed" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    subject_professional_id, subject_id, user_professional_id
+    subject_professional_id, subject_id, user_professional_id, score, suggest, reviewed
   </sql>
   <select id="selectByExample" parameterType="com.sc.pojo.SubjectProfessionalExample" resultMap="BaseResultMap">
     select
@@ -99,9 +102,11 @@
   </delete>
   <insert id="insert" parameterType="com.sc.pojo.SubjectProfessional">
     insert into subject_professional (subject_professional_id, subject_id, 
-      user_professional_id)
+      user_professional_id, score, suggest, 
+      reviewed)
     values (#{subjectProfessionalId,jdbcType=INTEGER}, #{subjectId,jdbcType=INTEGER}, 
-      #{userProfessionalId,jdbcType=INTEGER})
+      #{userProfessionalId,jdbcType=INTEGER}, #{score,jdbcType=DOUBLE}, #{suggest,jdbcType=VARCHAR}, 
+      #{reviewed,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.sc.pojo.SubjectProfessional">
     insert into subject_professional
@@ -115,6 +120,15 @@
       <if test="userProfessionalId != null">
         user_professional_id,
       </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="suggest != null">
+        suggest,
+      </if>
+      <if test="reviewed != null">
+        reviewed,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="subjectProfessionalId != null">
@@ -125,6 +139,15 @@
       </if>
       <if test="userProfessionalId != null">
         #{userProfessionalId,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=DOUBLE},
+      </if>
+      <if test="suggest != null">
+        #{suggest,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewed != null">
+        #{reviewed,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -146,6 +169,15 @@
       <if test="record.userProfessionalId != null">
         user_professional_id = #{record.userProfessionalId,jdbcType=INTEGER},
       </if>
+      <if test="record.score != null">
+        score = #{record.score,jdbcType=DOUBLE},
+      </if>
+      <if test="record.suggest != null">
+        suggest = #{record.suggest,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reviewed != null">
+        reviewed = #{record.reviewed,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -155,7 +187,10 @@
     update subject_professional
     set subject_professional_id = #{record.subjectProfessionalId,jdbcType=INTEGER},
       subject_id = #{record.subjectId,jdbcType=INTEGER},
-      user_professional_id = #{record.userProfessionalId,jdbcType=INTEGER}
+      user_professional_id = #{record.userProfessionalId,jdbcType=INTEGER},
+      score = #{record.score,jdbcType=DOUBLE},
+      suggest = #{record.suggest,jdbcType=VARCHAR},
+      reviewed = #{record.reviewed,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -169,13 +204,25 @@
       <if test="userProfessionalId != null">
         user_professional_id = #{userProfessionalId,jdbcType=INTEGER},
       </if>
+      <if test="score != null">
+        score = #{score,jdbcType=DOUBLE},
+      </if>
+      <if test="suggest != null">
+        suggest = #{suggest,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewed != null">
+        reviewed = #{reviewed,jdbcType=INTEGER},
+      </if>
     </set>
     where subject_professional_id = #{subjectProfessionalId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sc.pojo.SubjectProfessional">
     update subject_professional
     set subject_id = #{subjectId,jdbcType=INTEGER},
-      user_professional_id = #{userProfessionalId,jdbcType=INTEGER}
+      user_professional_id = #{userProfessionalId,jdbcType=INTEGER},
+      score = #{score,jdbcType=DOUBLE},
+      suggest = #{suggest,jdbcType=VARCHAR},
+      reviewed = #{reviewed,jdbcType=INTEGER}
     where subject_professional_id = #{subjectProfessionalId,jdbcType=INTEGER}
   </update>
 </mapper>

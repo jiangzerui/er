@@ -283,6 +283,196 @@ public class SubjectProfessionalExample {
             addCriterion("user_professional_id not between", value1, value2, "userProfessionalId");
             return (Criteria) this;
         }
+
+        public Criteria andScoreIsNull() {
+            addCriterion("score is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andScoreIsNotNull() {
+            addCriterion("score is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andScoreEqualTo(Double value) {
+            addCriterion("score =", value, "score");
+            return (Criteria) this;
+        }
+
+        public Criteria andScoreNotEqualTo(Double value) {
+            addCriterion("score <>", value, "score");
+            return (Criteria) this;
+        }
+
+        public Criteria andScoreGreaterThan(Double value) {
+            addCriterion("score >", value, "score");
+            return (Criteria) this;
+        }
+
+        public Criteria andScoreGreaterThanOrEqualTo(Double value) {
+            addCriterion("score >=", value, "score");
+            return (Criteria) this;
+        }
+
+        public Criteria andScoreLessThan(Double value) {
+            addCriterion("score <", value, "score");
+            return (Criteria) this;
+        }
+
+        public Criteria andScoreLessThanOrEqualTo(Double value) {
+            addCriterion("score <=", value, "score");
+            return (Criteria) this;
+        }
+
+        public Criteria andScoreIn(List<Double> values) {
+            addCriterion("score in", values, "score");
+            return (Criteria) this;
+        }
+
+        public Criteria andScoreNotIn(List<Double> values) {
+            addCriterion("score not in", values, "score");
+            return (Criteria) this;
+        }
+
+        public Criteria andScoreBetween(Double value1, Double value2) {
+            addCriterion("score between", value1, value2, "score");
+            return (Criteria) this;
+        }
+
+        public Criteria andScoreNotBetween(Double value1, Double value2) {
+            addCriterion("score not between", value1, value2, "score");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuggestIsNull() {
+            addCriterion("suggest is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuggestIsNotNull() {
+            addCriterion("suggest is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuggestEqualTo(String value) {
+            addCriterion("suggest =", value, "suggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuggestNotEqualTo(String value) {
+            addCriterion("suggest <>", value, "suggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuggestGreaterThan(String value) {
+            addCriterion("suggest >", value, "suggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuggestGreaterThanOrEqualTo(String value) {
+            addCriterion("suggest >=", value, "suggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuggestLessThan(String value) {
+            addCriterion("suggest <", value, "suggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuggestLessThanOrEqualTo(String value) {
+            addCriterion("suggest <=", value, "suggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuggestLike(String value) {
+            addCriterion("suggest like", value, "suggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuggestNotLike(String value) {
+            addCriterion("suggest not like", value, "suggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuggestIn(List<String> values) {
+            addCriterion("suggest in", values, "suggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuggestNotIn(List<String> values) {
+            addCriterion("suggest not in", values, "suggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuggestBetween(String value1, String value2) {
+            addCriterion("suggest between", value1, value2, "suggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuggestNotBetween(String value1, String value2) {
+            addCriterion("suggest not between", value1, value2, "suggest");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewedIsNull() {
+            addCriterion("reviewed is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewedIsNotNull() {
+            addCriterion("reviewed is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewedEqualTo(Integer value) {
+            addCriterion("reviewed =", value, "reviewed");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewedNotEqualTo(Integer value) {
+            addCriterion("reviewed <>", value, "reviewed");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewedGreaterThan(Integer value) {
+            addCriterion("reviewed >", value, "reviewed");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewedGreaterThanOrEqualTo(Integer value) {
+            addCriterion("reviewed >=", value, "reviewed");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewedLessThan(Integer value) {
+            addCriterion("reviewed <", value, "reviewed");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewedLessThanOrEqualTo(Integer value) {
+            addCriterion("reviewed <=", value, "reviewed");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewedIn(List<Integer> values) {
+            addCriterion("reviewed in", values, "reviewed");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewedNotIn(List<Integer> values) {
+            addCriterion("reviewed not in", values, "reviewed");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewedBetween(Integer value1, Integer value2) {
+            addCriterion("reviewed between", value1, value2, "reviewed");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewedNotBetween(Integer value1, Integer value2) {
+            addCriterion("reviewed not between", value1, value2, "reviewed");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

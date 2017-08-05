@@ -17,4 +17,11 @@ public interface OrgnaizationService {
 	 * @param projectCode
 	 */
 	public List<Orgnaization> findByProjectCode(String projectCode);
+
+	/**
+	 * 通过主键查询组织信息
+	 * @param orgId
+	 * @return
+	 */
+	public Orgnaization findById(int orgId);
 }

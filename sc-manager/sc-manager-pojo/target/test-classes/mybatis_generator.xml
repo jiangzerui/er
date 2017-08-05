@@ -81,7 +81,7 @@
 						<table tableName="role_menu"></table>
 						<table tableName="subject"></table>
 						-->
-						<table tableName="professor"></table>
+						<table tableName="subject_professional"></table>
 												
 					</context>
 

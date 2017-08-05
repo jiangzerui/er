@@ -46,4 +46,9 @@ public class OrgnaizationServiceImpl implements OrgnaizationService {
 		return os;
 	}
 
+	@Override
+	public Orgnaization findById(int orgId) {
+		return orgnaizationMapper.selectByPrimaryKey(orgId);
+	}
+
 }

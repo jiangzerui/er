@@ -33,4 +33,18 @@ public interface SubjectService {
 	 */
 	public void updateSubjectStatus(Subject subject);
 	
+	/**
+	 * 通过专家id 查找分配给该专家的所有课题  未审批的
+	 * @param userId
+	 * @return
+	 */
+	public PageInfo<Subject> findUnReviewedSubjectsByProfessionalId(Integer userId, int page);
+
+	/**
+	 * 通过主键查询课题信息
+	 * @param subjectId
+	 * @return
+	 */
+	public Subject findSubjectById(int subjectId);
+	
 }

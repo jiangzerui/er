@@ -7,6 +7,12 @@ public class SubjectProfessional {
 
     private Integer userProfessionalId;
 
+    private Double score;
+
+    private String suggest;
+
+    private Integer reviewed;
+
     public Integer getSubjectProfessionalId() {
         return subjectProfessionalId;
     }
@@ -29,5 +35,29 @@ public class SubjectProfessional {
 
     public void setUserProfessionalId(Integer userProfessionalId) {
         this.userProfessionalId = userProfessionalId;
+    }
+
+    public Double getScore() {
+        return score;
+    }
+
+    public void setScore(Double score) {
+        this.score = score;
+    }
+
+    public String getSuggest() {
+        return suggest;
+    }
+
+    public void setSuggest(String suggest) {
+        this.suggest = suggest == null ? null : suggest.trim();
+    }
+
+    public Integer getReviewed() {
+        return reviewed;
+    }
+
+    public void setReviewed(Integer reviewed) {
+        this.reviewed = reviewed;
     }
 }

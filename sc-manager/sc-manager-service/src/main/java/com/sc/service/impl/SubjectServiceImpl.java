@@ -1,5 +1,6 @@
 package com.sc.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +11,14 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sc.mapper.ProjectMapper;
 import com.sc.mapper.SubjectMapper;
+import com.sc.mapper.SubjectProfessionalMapper;
 import com.sc.mapper.UserOrgnaizationMapper;
 import com.sc.pojo.Project;
 import com.sc.pojo.ProjectExample;
 import com.sc.pojo.Subject;
 import com.sc.pojo.SubjectExample;
+import com.sc.pojo.SubjectProfessional;
+import com.sc.pojo.SubjectProfessionalExample;
 import com.sc.pojo.UserOrgnaization;
 import com.sc.pojo.UserOrgnaizationExample;
 import com.sc.pojo.UserOrgnaizationExample.Criteria;
@@ -24,6 +28,8 @@ import com.sc.service.SubjectService;
 public class SubjectServiceImpl implements SubjectService {
 	@Autowired
 	private SubjectMapper subjectMapper;
+	@Autowired
+	private SubjectProfessionalMapper spMapper;
 	@Autowired
 	private UserOrgnaizationMapper userOrgnaizationMapper;
 	@Autowired
@@ -94,4 +100,32 @@ public class SubjectServiceImpl implements SubjectService {
 		return pageInfo;
 	}
 
+	@Override
+	public PageInfo<Subject> findUnReviewedSubjectsByProfessionalId(Integer userId, int page) {
+		//通过pmid，查询可审核的课题列表
+		SubjectProfessionalExample e = new SubjectProfessionalExample();
+		com.sc.pojo.SubjectProfessionalExample.Criteria c = e.createCriteria();
+		c.andUserProfessionalIdEqualTo(userId).andReviewedEqualTo(0);
+		PageHelper.startPage(page, pagesize);
+		List<SubjectProfessional> sps = spMapper.selectByExample(e);
+		List<Subject> ss = new ArrayList<Subject>();
+		for(SubjectProfessional sp : sps){
+			ss.add(subjectMapper.selectByPrimaryKey(sp.getSubjectId()));
+		}
+		PageInfo<Subject> pageInfo = new PageInfo<Subject>(ss);
+		return pageInfo;
+	}
+
+	@Override
+	public Subject findSubjectById(int subjectId) {
+		return subjectMapper.selectByPrimaryKey(subjectId);
+	}
+
 }
+
+
+
+
+
+
+

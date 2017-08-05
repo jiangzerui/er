@@ -2,6 +2,8 @@ package com.sc.service;
 
 import java.util.List;
 
+import com.github.pagehelper.PageInfo;
+import com.sc.pojo.Subject;
 import com.sc.pojo.SubjectProfessional;
 
 public interface SubjectProfessionalService {
@@ -20,5 +22,12 @@ public interface SubjectProfessionalService {
 	 * @return
 	 */
 	public List<SubjectProfessional> findBySubjectId(int subjectId);
+
+	/**
+	 * 更新审核表
+	 * @param subjectProfessional
+	 */
+	public void updateReviewSubject(SubjectProfessional subjectProfessional);
+
 	
 }
