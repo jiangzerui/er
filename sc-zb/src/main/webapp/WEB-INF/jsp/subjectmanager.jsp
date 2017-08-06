@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -43,9 +44,6 @@
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <a href="#" class="btn btn-success btn-sm">全部项目</a>
-            <a href="#" class="btn btn-primary btn-sm">项目一</a>
-            <a href="#" class="btn btn-primary btn-sm">项目二</a>
-            <a href="#" class="btn btn-primary btn-sm">项目一</a>
         </div>
     </div>
     <!--END-->
@@ -70,31 +68,29 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <c:forEach items="${subjects}" var="subject" varStatus="status">
                             <tr>
-                                <td>1</td>
-                                <td>双创平台</td>
-                                <td>动力基金</td>
-                                <td>已申请</td>
-                                <td>2017年7月27日</td>
-                                <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">查看</button>
+                                <td>${status.index+1 }</td>
+                                <td>${subject.subjectName }</td>
+                                <td>${subject.projectName }</td>
+                                <td>
+                                	<c:if test="${subject.subjectStatus<300}">
+                                		已申请
+                                	</c:if>
+                                	<c:if test="${subject.subjectStatus==300}">
+                                		已立项
+                                	</c:if>
+                                	<c:if test="${subject.subjectStatus==410}">
+                                		未通过
+                                	</c:if>
+                                </td>
+                                <td>
+                                	<fmt:formatDate value="${subject.createTime }" pattern="yyyy年MM月dd日"/>
+                                </td>
+                                <td><button type="button" class="btn btn-primary btn-sm" ${subject.subjectStatus==300 ? "" : "disabled"} data-toggle="modal" data-target="#myModal" onclick="operation(${subject.subjectId})">操作</button>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>双创平台</td>
-                                <td>动力基金</td>
-                                <td>已申请</td>
-                                <td>2017年7月27日</td>
-                                <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">查看</button></td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>双创平台</td>
-                                <td>动力基金</td>
-                                <td>已申请</td>
-                                <td>2017年7月27日</td>
-                                <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">查看</button></td>
-                            </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>
@@ -107,14 +103,8 @@
         <div class="col-sm-6"></div>
         <div class="col-sm-6">
             <nav aria-label="Page navigation">
-                <ul class="pagination">
-                    <li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+                <ul class="pagination" id="bottom_page">
+                    
                 </ul>
             </nav>
         </div>
@@ -132,16 +122,52 @@
             </div>
             <div class="modal-body">
                 <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">阶段成果报告</button>
-                <div class="form-group"><label for="exampleInputFile">上传阶段成果</label><input name="guideFile" type="file" id="guide"></div>
-                <!--for all role-->
-
+                
+                <div id="result_table_div"></div>
+                
+                <c:if test='${user.roleCode=="10001" }'>
+	                <form id="subjectResultForm" action="subjectResultFile.html" enctype="multipart/form-data" method="post">
+	                <input name="subjectId" id="subjectIdInput" type="hidden"/>
+	                <div class="form-group"><label for="exampleInputFile">上传阶段成果</label><input name="resultFile" type="file" id="resultFileInput"></div>
+	                <!--for all role-->
+				</form>
+				</c:if>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary">提交报告</button>
+                <c:if test='${user.roleCode=="10001" }'>
+                	<button type="submit" class="btn btn-primary" onclick="$('#subjectResultForm').submit()">提交报告</button>
+                </c:if>
             </div>
         </div>
     </div>
 </div>
+	<script src="assets/js/bootstrap-paginator.js"></script>
+	<script src="assets/js/qunit-1.11.0.js"></script>
+	<script type="text/javascript">
+
+    $(function(){
+        test("", function(){
+            var element = $('#bottom_page');
+            var options = {
+                bootstrapMajorVersion:3,
+                currentPage: ${pageInfo.pageNum},
+                numberOfPages: ${pageInfo.pageSize},
+                totalPages:${pageInfo.pages},
+                shouldShowPage:true,//是否显示该按钮
+                //点击事件
+                onPageClicked: function (event, originalEvent, type, page) {
+                    location.href = "sm.html?page=" + page;
+                }
+            }
+            element.bootstrapPaginator(options);
+        })
+    });
+    function operation(subjectId){
+    	$("#subjectIdInput").val(subjectId);
+    	//一部加载当前subject的阶段成果列表
+    	$("#result_table_div").load("getResultModalBox.html", {subjectId : subjectId});
+    }
+   </script>
 </body>
 </html>

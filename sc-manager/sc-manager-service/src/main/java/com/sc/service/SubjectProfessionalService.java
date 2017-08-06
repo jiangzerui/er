@@ -29,5 +29,11 @@ public interface SubjectProfessionalService {
 	 */
 	public void updateReviewSubject(SubjectProfessional subjectProfessional);
 
+	/**
+	 * 通过主键查询课题专家中间表的数据 
+	 * @param subjectProfessionalId
+	 * @return
+	 */
+	public SubjectProfessional selectBySubjectProfessionalId(int subjectProfessionalId);
 	
 }

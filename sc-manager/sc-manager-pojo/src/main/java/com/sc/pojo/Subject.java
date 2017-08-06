@@ -35,6 +35,8 @@ public class Subject {
 
     private String projectName;
 
+    private Integer pmCheckStatus;
+
     public Integer getSubjectId() {
         return subjectId;
     }
@@ -161,5 +163,13 @@ public class Subject {
 
     public void setProjectName(String projectName) {
         this.projectName = projectName == null ? null : projectName.trim();
+    }
+
+    public Integer getPmCheckStatus() {
+        return pmCheckStatus;
+    }
+
+    public void setPmCheckStatus(Integer pmCheckStatus) {
+        this.pmCheckStatus = pmCheckStatus;
     }
 }

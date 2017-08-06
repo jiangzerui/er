@@ -11,6 +11,8 @@ public class SubjectResult {
 
     private String subjectResultCode;
 
+    private Integer subjectId;
+
     public Integer getSubjectResultId() {
         return subjectResultId;
     }
@@ -49,5 +51,13 @@ public class SubjectResult {
 
     public void setSubjectResultCode(String subjectResultCode) {
         this.subjectResultCode = subjectResultCode == null ? null : subjectResultCode.trim();
+    }
+
+    public Integer getSubjectId() {
+        return subjectId;
+    }
+
+    public void setSubjectId(Integer subjectId) {
+        this.subjectId = subjectId;
     }
 }

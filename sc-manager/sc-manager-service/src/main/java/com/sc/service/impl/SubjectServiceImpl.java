@@ -55,6 +55,7 @@ public class SubjectServiceImpl implements SubjectService {
 	public void saveSubject(Subject subject) {
 		Project p = projectMapper.selectByPrimaryKey(subject.getProjectId());
 		subject.setProjectName(p.getProjectName());
+		subject.setPmCheckStatus(0);
 		subjectMapper.insert(subject);
 	}
 
@@ -93,7 +94,7 @@ public class SubjectServiceImpl implements SubjectService {
 		SubjectExample e2 = new SubjectExample();
 		com.sc.pojo.SubjectExample.Criteria c2 = e2.createCriteria();
 		c2.andPmIdEqualTo(userId);
-		c2.andSubjectStatusEqualTo(SUBJECT_STATUS_ORGNAIZATION_PASSED);
+		c2.andSubjectStatusGreaterThanOrEqualTo(SUBJECT_STATUS_ORGNAIZATION_PASSED);
 		PageHelper.startPage(page, pagesize);
 		List<Subject> subjects = subjectMapper.selectByExample(e2);
 		PageInfo<Subject> pageInfo = new PageInfo<Subject>(subjects);
@@ -119,6 +120,28 @@ public class SubjectServiceImpl implements SubjectService {
 	@Override
 	public Subject findSubjectById(int subjectId) {
 		return subjectMapper.selectByPrimaryKey(subjectId);
+	}
+
+	@Override
+	public PageInfo<Subject> findSubjectByPmAndStatus(Integer userId, int page) {
+		SubjectExample example = new SubjectExample();
+		com.sc.pojo.SubjectExample.Criteria criteria = example.createCriteria();
+		criteria.andPmIdEqualTo(userId).andPmCheckStatusEqualTo(0);
+		PageHelper.startPage(page, pagesize);
+		List<Subject> subjects = subjectMapper.selectByExample(example );
+		PageInfo<Subject> pageInfo = new PageInfo<Subject>(subjects);
+		return pageInfo;
+	}
+
+	@Override
+	public PageInfo<Subject> findSubjectByUserId(Integer userId, int page) {
+		SubjectExample example = new SubjectExample();
+		com.sc.pojo.SubjectExample.Criteria criteria = example.createCriteria();
+		criteria.andUserIdEqualTo(userId);
+		PageHelper.startPage(page, pagesize);
+		List<Subject> subjects = subjectMapper.selectByExample(example );
+		PageInfo<Subject> pageInfo = new PageInfo<Subject>(subjects);
+		return pageInfo;
 	}
 
 }

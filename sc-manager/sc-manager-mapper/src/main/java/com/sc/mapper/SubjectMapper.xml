@@ -18,6 +18,7 @@
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="project_name" jdbcType="VARCHAR" property="projectName" />
+    <result column="pm_check_status" jdbcType="INTEGER" property="pmCheckStatus" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -80,7 +81,7 @@
   <sql id="Base_Column_List">
     subject_id, subject_code, subject_name, description, user_id, project_id, subject_status, 
     pm_id, pm_suggest, professional_id, professional_suggest, org_id, subject_file, user_name, 
-    create_time, project_name
+    create_time, project_name, pm_check_status
   </sql>
   <select id="selectByExample" parameterType="com.sc.pojo.SubjectExample" resultMap="BaseResultMap">
     select
@@ -118,13 +119,13 @@
       subject_status, pm_id, pm_suggest, 
       professional_id, professional_suggest, org_id, 
       subject_file, user_name, create_time, 
-      project_name)
+      project_name, pm_check_status)
     values (#{subjectId,jdbcType=INTEGER}, #{subjectCode,jdbcType=VARCHAR}, #{subjectName,jdbcType=VARCHAR}, 
       #{description,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, 
       #{subjectStatus,jdbcType=INTEGER}, #{pmId,jdbcType=INTEGER}, #{pmSuggest,jdbcType=VARCHAR}, 
       #{professionalId,jdbcType=INTEGER}, #{professionalSuggest,jdbcType=VARCHAR}, #{orgId,jdbcType=INTEGER}, 
       #{subjectFile,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{projectName,jdbcType=VARCHAR})
+      #{projectName,jdbcType=VARCHAR}, #{pmCheckStatus,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.sc.pojo.Subject">
     insert into subject
@@ -177,6 +178,9 @@
       <if test="projectName != null">
         project_name,
       </if>
+      <if test="pmCheckStatus != null">
+        pm_check_status,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="subjectId != null">
@@ -226,6 +230,9 @@
       </if>
       <if test="projectName != null">
         #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="pmCheckStatus != null">
+        #{pmCheckStatus,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -286,6 +293,9 @@
       <if test="record.projectName != null">
         project_name = #{record.projectName,jdbcType=VARCHAR},
       </if>
+      <if test="record.pmCheckStatus != null">
+        pm_check_status = #{record.pmCheckStatus,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -308,7 +318,8 @@
       subject_file = #{record.subjectFile,jdbcType=VARCHAR},
       user_name = #{record.userName,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      project_name = #{record.projectName,jdbcType=VARCHAR}
+      project_name = #{record.projectName,jdbcType=VARCHAR},
+      pm_check_status = #{record.pmCheckStatus,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -361,6 +372,9 @@
       <if test="projectName != null">
         project_name = #{projectName,jdbcType=VARCHAR},
       </if>
+      <if test="pmCheckStatus != null">
+        pm_check_status = #{pmCheckStatus,jdbcType=INTEGER},
+      </if>
     </set>
     where subject_id = #{subjectId,jdbcType=INTEGER}
   </update>
@@ -380,7 +394,8 @@
       subject_file = #{subjectFile,jdbcType=VARCHAR},
       user_name = #{userName,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      project_name = #{projectName,jdbcType=VARCHAR}
+      project_name = #{projectName,jdbcType=VARCHAR},
+      pm_check_status = #{pmCheckStatus,jdbcType=INTEGER}
     where subject_id = #{subjectId,jdbcType=INTEGER}
   </update>
 </mapper>

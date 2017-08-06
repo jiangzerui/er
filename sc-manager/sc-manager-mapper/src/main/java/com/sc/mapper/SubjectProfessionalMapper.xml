@@ -8,6 +8,9 @@
     <result column="score" jdbcType="DOUBLE" property="score" />
     <result column="suggest" jdbcType="VARCHAR" property="suggest" />
     <result column="reviewed" jdbcType="INTEGER" property="reviewed" />
+    <result column="professional_name" jdbcType="VARCHAR" property="professionalName" />
+    <result column="orgnaization_name" jdbcType="VARCHAR" property="orgnaizationName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    subject_professional_id, subject_id, user_professional_id, score, suggest, reviewed
+    subject_professional_id, subject_id, user_professional_id, score, suggest, reviewed, 
+    professional_name, orgnaization_name, create_time
   </sql>
   <select id="selectByExample" parameterType="com.sc.pojo.SubjectProfessionalExample" resultMap="BaseResultMap">
     select
@@ -103,10 +107,12 @@
   <insert id="insert" parameterType="com.sc.pojo.SubjectProfessional">
     insert into subject_professional (subject_professional_id, subject_id, 
       user_professional_id, score, suggest, 
-      reviewed)
+      reviewed, professional_name, orgnaization_name, 
+      create_time)
     values (#{subjectProfessionalId,jdbcType=INTEGER}, #{subjectId,jdbcType=INTEGER}, 
       #{userProfessionalId,jdbcType=INTEGER}, #{score,jdbcType=DOUBLE}, #{suggest,jdbcType=VARCHAR}, 
-      #{reviewed,jdbcType=INTEGER})
+      #{reviewed,jdbcType=INTEGER}, #{professionalName,jdbcType=VARCHAR}, #{orgnaizationName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.sc.pojo.SubjectProfessional">
     insert into subject_professional
@@ -129,6 +135,15 @@
       <if test="reviewed != null">
         reviewed,
       </if>
+      <if test="professionalName != null">
+        professional_name,
+      </if>
+      <if test="orgnaizationName != null">
+        orgnaization_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="subjectProfessionalId != null">
@@ -148,6 +163,15 @@
       </if>
       <if test="reviewed != null">
         #{reviewed,jdbcType=INTEGER},
+      </if>
+      <if test="professionalName != null">
+        #{professionalName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgnaizationName != null">
+        #{orgnaizationName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -178,6 +202,15 @@
       <if test="record.reviewed != null">
         reviewed = #{record.reviewed,jdbcType=INTEGER},
       </if>
+      <if test="record.professionalName != null">
+        professional_name = #{record.professionalName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgnaizationName != null">
+        orgnaization_name = #{record.orgnaizationName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -190,7 +223,10 @@
       user_professional_id = #{record.userProfessionalId,jdbcType=INTEGER},
       score = #{record.score,jdbcType=DOUBLE},
       suggest = #{record.suggest,jdbcType=VARCHAR},
-      reviewed = #{record.reviewed,jdbcType=INTEGER}
+      reviewed = #{record.reviewed,jdbcType=INTEGER},
+      professional_name = #{record.professionalName,jdbcType=VARCHAR},
+      orgnaization_name = #{record.orgnaizationName,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -213,6 +249,15 @@
       <if test="reviewed != null">
         reviewed = #{reviewed,jdbcType=INTEGER},
       </if>
+      <if test="professionalName != null">
+        professional_name = #{professionalName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgnaizationName != null">
+        orgnaization_name = #{orgnaizationName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where subject_professional_id = #{subjectProfessionalId,jdbcType=INTEGER}
   </update>
@@ -222,7 +267,10 @@
       user_professional_id = #{userProfessionalId,jdbcType=INTEGER},
       score = #{score,jdbcType=DOUBLE},
       suggest = #{suggest,jdbcType=VARCHAR},
-      reviewed = #{reviewed,jdbcType=INTEGER}
+      reviewed = #{reviewed,jdbcType=INTEGER},
+      professional_name = #{professionalName,jdbcType=VARCHAR},
+      orgnaization_name = #{orgnaizationName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
     where subject_professional_id = #{subjectProfessionalId,jdbcType=INTEGER}
   </update>
 </mapper>

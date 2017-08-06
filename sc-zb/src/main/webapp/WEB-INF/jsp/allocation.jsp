@@ -140,7 +140,7 @@
                 shouldShowPage:true,//是否显示该按钮
                 //点击事件
                 onPageClicked: function (event, originalEvent, type, page) {
-                    location.href = "cb.html?page=" + page;
+                    location.href = "as.html?page=" + page;
                 }
             }
             element.bootstrapPaginator(options);

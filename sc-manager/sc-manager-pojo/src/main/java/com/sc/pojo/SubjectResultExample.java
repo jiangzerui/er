@@ -235,72 +235,72 @@ public class SubjectResultExample {
         }
 
         public Criteria andSubjectResultUrlIsNull() {
-            addCriterion("subject-result_url is null");
+            addCriterion("subject_result_url is null");
             return (Criteria) this;
         }
 
         public Criteria andSubjectResultUrlIsNotNull() {
-            addCriterion("subject-result_url is not null");
+            addCriterion("subject_result_url is not null");
             return (Criteria) this;
         }
 
         public Criteria andSubjectResultUrlEqualTo(String value) {
-            addCriterion("subject-result_url =", value, "subjectResultUrl");
+            addCriterion("subject_result_url =", value, "subjectResultUrl");
             return (Criteria) this;
         }
 
         public Criteria andSubjectResultUrlNotEqualTo(String value) {
-            addCriterion("subject-result_url <>", value, "subjectResultUrl");
+            addCriterion("subject_result_url <>", value, "subjectResultUrl");
             return (Criteria) this;
         }
 
         public Criteria andSubjectResultUrlGreaterThan(String value) {
-            addCriterion("subject-result_url >", value, "subjectResultUrl");
+            addCriterion("subject_result_url >", value, "subjectResultUrl");
             return (Criteria) this;
         }
 
         public Criteria andSubjectResultUrlGreaterThanOrEqualTo(String value) {
-            addCriterion("subject-result_url >=", value, "subjectResultUrl");
+            addCriterion("subject_result_url >=", value, "subjectResultUrl");
             return (Criteria) this;
         }
 
         public Criteria andSubjectResultUrlLessThan(String value) {
-            addCriterion("subject-result_url <", value, "subjectResultUrl");
+            addCriterion("subject_result_url <", value, "subjectResultUrl");
             return (Criteria) this;
         }
 
         public Criteria andSubjectResultUrlLessThanOrEqualTo(String value) {
-            addCriterion("subject-result_url <=", value, "subjectResultUrl");
+            addCriterion("subject_result_url <=", value, "subjectResultUrl");
             return (Criteria) this;
         }
 
         public Criteria andSubjectResultUrlLike(String value) {
-            addCriterion("subject-result_url like", value, "subjectResultUrl");
+            addCriterion("subject_result_url like", value, "subjectResultUrl");
             return (Criteria) this;
         }
 
         public Criteria andSubjectResultUrlNotLike(String value) {
-            addCriterion("subject-result_url not like", value, "subjectResultUrl");
+            addCriterion("subject_result_url not like", value, "subjectResultUrl");
             return (Criteria) this;
         }
 
         public Criteria andSubjectResultUrlIn(List<String> values) {
-            addCriterion("subject-result_url in", values, "subjectResultUrl");
+            addCriterion("subject_result_url in", values, "subjectResultUrl");
             return (Criteria) this;
         }
 
         public Criteria andSubjectResultUrlNotIn(List<String> values) {
-            addCriterion("subject-result_url not in", values, "subjectResultUrl");
+            addCriterion("subject_result_url not in", values, "subjectResultUrl");
             return (Criteria) this;
         }
 
         public Criteria andSubjectResultUrlBetween(String value1, String value2) {
-            addCriterion("subject-result_url between", value1, value2, "subjectResultUrl");
+            addCriterion("subject_result_url between", value1, value2, "subjectResultUrl");
             return (Criteria) this;
         }
 
         public Criteria andSubjectResultUrlNotBetween(String value1, String value2) {
-            addCriterion("subject-result_url not between", value1, value2, "subjectResultUrl");
+            addCriterion("subject_result_url not between", value1, value2, "subjectResultUrl");
             return (Criteria) this;
         }
 
@@ -441,6 +441,66 @@ public class SubjectResultExample {
 
         public Criteria andSubjectResultCodeNotBetween(String value1, String value2) {
             addCriterion("subject_result_code not between", value1, value2, "subjectResultCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubjectIdIsNull() {
+            addCriterion("subject_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubjectIdIsNotNull() {
+            addCriterion("subject_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubjectIdEqualTo(Integer value) {
+            addCriterion("subject_id =", value, "subjectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubjectIdNotEqualTo(Integer value) {
+            addCriterion("subject_id <>", value, "subjectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubjectIdGreaterThan(Integer value) {
+            addCriterion("subject_id >", value, "subjectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubjectIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("subject_id >=", value, "subjectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubjectIdLessThan(Integer value) {
+            addCriterion("subject_id <", value, "subjectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubjectIdLessThanOrEqualTo(Integer value) {
+            addCriterion("subject_id <=", value, "subjectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubjectIdIn(List<Integer> values) {
+            addCriterion("subject_id in", values, "subjectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubjectIdNotIn(List<Integer> values) {
+            addCriterion("subject_id not in", values, "subjectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubjectIdBetween(Integer value1, Integer value2) {
+            addCriterion("subject_id between", value1, value2, "subjectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubjectIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("subject_id not between", value1, value2, "subjectId");
             return (Criteria) this;
         }
     }

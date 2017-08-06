@@ -1144,6 +1144,66 @@ public class SubjectExample {
             addCriterion("project_name not between", value1, value2, "projectName");
             return (Criteria) this;
         }
+
+        public Criteria andPmCheckStatusIsNull() {
+            addCriterion("pm_check_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmCheckStatusIsNotNull() {
+            addCriterion("pm_check_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmCheckStatusEqualTo(Integer value) {
+            addCriterion("pm_check_status =", value, "pmCheckStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmCheckStatusNotEqualTo(Integer value) {
+            addCriterion("pm_check_status <>", value, "pmCheckStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmCheckStatusGreaterThan(Integer value) {
+            addCriterion("pm_check_status >", value, "pmCheckStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmCheckStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("pm_check_status >=", value, "pmCheckStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmCheckStatusLessThan(Integer value) {
+            addCriterion("pm_check_status <", value, "pmCheckStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmCheckStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("pm_check_status <=", value, "pmCheckStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmCheckStatusIn(List<Integer> values) {
+            addCriterion("pm_check_status in", values, "pmCheckStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmCheckStatusNotIn(List<Integer> values) {
+            addCriterion("pm_check_status not in", values, "pmCheckStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmCheckStatusBetween(Integer value1, Integer value2) {
+            addCriterion("pm_check_status between", value1, value2, "pmCheckStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmCheckStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("pm_check_status not between", value1, value2, "pmCheckStatus");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

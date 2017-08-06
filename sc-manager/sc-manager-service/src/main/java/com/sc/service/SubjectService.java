@@ -46,5 +46,19 @@ public interface SubjectService {
 	 * @return
 	 */
 	public Subject findSubjectById(int subjectId);
+
+	/**
+	 * 
+	 * @param userId
+	 * @return
+	 */
+	public PageInfo<Subject> findSubjectByPmAndStatus(Integer userId, int page);
+
+	/**
+	 * 通过发布人id查询课题列表
+	 * @param userId
+	 * @return
+	 */
+	public PageInfo<Subject>  findSubjectByUserId(Integer userId, int page);
 	
 }

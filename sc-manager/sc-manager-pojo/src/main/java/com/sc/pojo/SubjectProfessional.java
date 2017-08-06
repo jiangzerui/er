@@ -1,5 +1,7 @@
 package com.sc.pojo;
 
+import java.util.Date;
+
 public class SubjectProfessional {
     private Integer subjectProfessionalId;
 
@@ -12,6 +14,12 @@ public class SubjectProfessional {
     private String suggest;
 
     private Integer reviewed;
+
+    private String professionalName;
+
+    private String orgnaizationName;
+
+    private Date createTime;
 
     public Integer getSubjectProfessionalId() {
         return subjectProfessionalId;
@@ -59,5 +67,29 @@ public class SubjectProfessional {
 
     public void setReviewed(Integer reviewed) {
         this.reviewed = reviewed;
+    }
+
+    public String getProfessionalName() {
+        return professionalName;
+    }
+
+    public void setProfessionalName(String professionalName) {
+        this.professionalName = professionalName == null ? null : professionalName.trim();
+    }
+
+    public String getOrgnaizationName() {
+        return orgnaizationName;
+    }
+
+    public void setOrgnaizationName(String orgnaizationName) {
+        this.orgnaizationName = orgnaizationName == null ? null : orgnaizationName.trim();
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

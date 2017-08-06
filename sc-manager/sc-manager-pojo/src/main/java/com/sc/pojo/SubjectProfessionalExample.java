@@ -1,6 +1,7 @@
 package com.sc.pojo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class SubjectProfessionalExample {
@@ -471,6 +472,206 @@ public class SubjectProfessionalExample {
 
         public Criteria andReviewedNotBetween(Integer value1, Integer value2) {
             addCriterion("reviewed not between", value1, value2, "reviewed");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalNameIsNull() {
+            addCriterion("professional_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalNameIsNotNull() {
+            addCriterion("professional_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalNameEqualTo(String value) {
+            addCriterion("professional_name =", value, "professionalName");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalNameNotEqualTo(String value) {
+            addCriterion("professional_name <>", value, "professionalName");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalNameGreaterThan(String value) {
+            addCriterion("professional_name >", value, "professionalName");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalNameGreaterThanOrEqualTo(String value) {
+            addCriterion("professional_name >=", value, "professionalName");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalNameLessThan(String value) {
+            addCriterion("professional_name <", value, "professionalName");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalNameLessThanOrEqualTo(String value) {
+            addCriterion("professional_name <=", value, "professionalName");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalNameLike(String value) {
+            addCriterion("professional_name like", value, "professionalName");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalNameNotLike(String value) {
+            addCriterion("professional_name not like", value, "professionalName");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalNameIn(List<String> values) {
+            addCriterion("professional_name in", values, "professionalName");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalNameNotIn(List<String> values) {
+            addCriterion("professional_name not in", values, "professionalName");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalNameBetween(String value1, String value2) {
+            addCriterion("professional_name between", value1, value2, "professionalName");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfessionalNameNotBetween(String value1, String value2) {
+            addCriterion("professional_name not between", value1, value2, "professionalName");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgnaizationNameIsNull() {
+            addCriterion("orgnaization_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgnaizationNameIsNotNull() {
+            addCriterion("orgnaization_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgnaizationNameEqualTo(String value) {
+            addCriterion("orgnaization_name =", value, "orgnaizationName");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgnaizationNameNotEqualTo(String value) {
+            addCriterion("orgnaization_name <>", value, "orgnaizationName");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgnaizationNameGreaterThan(String value) {
+            addCriterion("orgnaization_name >", value, "orgnaizationName");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgnaizationNameGreaterThanOrEqualTo(String value) {
+            addCriterion("orgnaization_name >=", value, "orgnaizationName");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgnaizationNameLessThan(String value) {
+            addCriterion("orgnaization_name <", value, "orgnaizationName");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgnaizationNameLessThanOrEqualTo(String value) {
+            addCriterion("orgnaization_name <=", value, "orgnaizationName");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgnaizationNameLike(String value) {
+            addCriterion("orgnaization_name like", value, "orgnaizationName");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgnaizationNameNotLike(String value) {
+            addCriterion("orgnaization_name not like", value, "orgnaizationName");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgnaizationNameIn(List<String> values) {
+            addCriterion("orgnaization_name in", values, "orgnaizationName");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgnaizationNameNotIn(List<String> values) {
+            addCriterion("orgnaization_name not in", values, "orgnaizationName");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgnaizationNameBetween(String value1, String value2) {
+            addCriterion("orgnaization_name between", value1, value2, "orgnaizationName");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgnaizationNameNotBetween(String value1, String value2) {
+            addCriterion("orgnaization_name not between", value1, value2, "orgnaizationName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeIsNull() {
+            addCriterion("create_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeIsNotNull() {
+            addCriterion("create_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeEqualTo(Date value) {
+            addCriterion("create_time =", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeNotEqualTo(Date value) {
+            addCriterion("create_time <>", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeGreaterThan(Date value) {
+            addCriterion("create_time >", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("create_time >=", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeLessThan(Date value) {
+            addCriterion("create_time <", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeLessThanOrEqualTo(Date value) {
+            addCriterion("create_time <=", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeIn(List<Date> values) {
+            addCriterion("create_time in", values, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeNotIn(List<Date> values) {
+            addCriterion("create_time not in", values, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeBetween(Date value1, Date value2) {
+            addCriterion("create_time between", value1, value2, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
+            addCriterion("create_time not between", value1, value2, "createTime");
             return (Criteria) this;
         }
     }
