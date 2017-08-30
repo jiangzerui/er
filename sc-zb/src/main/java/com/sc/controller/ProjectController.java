@@ -2,6 +2,7 @@ package com.sc.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -68,7 +69,7 @@ public class ProjectController {
 	
 	//保存项目
 	@RequestMapping("/saveproject")
-	public String saveProject(HttpServletRequest request, Model model, Project project, @RequestParam("logoFile") CommonsMultipartFile logoFile, @RequestParam("guideFile") CommonsMultipartFile guideFile, String hasOrg, String orgs) throws Exception {
+	public String saveProject(HttpServletRequest request, Model model, Project project, @RequestParam("logoFile") CommonsMultipartFile logoFile, @RequestParam("guideFile") CommonsMultipartFile[] guideFiles, String hasOrg, String orgs) throws Exception {
 		//验证登录用户的权限
 		//获取cookie中的ticket，如果没有则直接转发到slideMenu.jsp  未登录状态
 		String ticket = CookieUtils.getCookieValue(request, TICKET_COOKIE_NAME);
@@ -84,7 +85,7 @@ public class ProjectController {
 		if(user==null || !user.getRoleCode().equals("10003")){
 			return "redirect:"+SSO+"/toLogin.html";
 		}
-		//把文件存入相应目录中
+		//把logo文件存入相应目录中
 		String logoFilePath = UploadUrlFactory.getProjectUploadLogoUrl(logoFile.getOriginalFilename());
 		File targetLogoFile = new File(request.getServletContext().getRealPath(logoFilePath));
 		if(!targetLogoFile.getParentFile().exists()){
@@ -92,21 +93,31 @@ public class ProjectController {
 		}
 		logoFile.transferTo(targetLogoFile);
 		
-		String guideFilePath = UploadUrlFactory.getProjectUploadFileUrl(guideFile.getOriginalFilename());
-		File targGuideFile = new File(request.getServletContext().getRealPath(guideFilePath));
-		if(!targGuideFile.getParentFile().exists()){
-			targGuideFile.mkdirs();
-		}
-		guideFile.transferTo(targGuideFile);
 		//整理project对象的属性，与关联对象的属性，调用service完成保存项目业务
-		project.setProjectCode(UniqueCodeGenerator.generate(20));
+		String projectCode = UniqueCodeGenerator.generate(20);
+		
+		//把指南文件存入目录中
+		List<Guide> guides = new ArrayList<Guide>();
+		for(CommonsMultipartFile guideFile : guideFiles){
+			String guideFilePath = UploadUrlFactory.getProjectUploadFileUrl(guideFile.getOriginalFilename());
+			File targGuideFile = new File(request.getServletContext().getRealPath(guideFilePath));
+			if(!targGuideFile.getParentFile().exists()){
+				targGuideFile.mkdirs();
+			}
+			guideFile.transferTo(targGuideFile);
+			Guide guide = new Guide();
+			guide.setGuideName(guideFile.getOriginalFilename());
+			guide.setGuideUrl(guideFilePath);
+			guide.setGuideCode(UniqueCodeGenerator.generate(20));
+			guide.setProjectCode(projectCode);
+			guides.add(guide);
+		}
+		project.setProjectCode(projectCode);
 		project.setProjectLogoUrl(logoFilePath);
 		project.setUserId(user.getUserId());
 		project.setProjectType(1);
-		Guide guide = new Guide();
-		guide.setGuideName(guideFile.getOriginalFilename());
-		guide.setGuideUrl(guideFilePath);
-		projectService.saveProject(project, guide, orgs);
+		
+		projectService.saveProject(project, guides, orgs);
 		return "redirect:index.html";
 	}
 

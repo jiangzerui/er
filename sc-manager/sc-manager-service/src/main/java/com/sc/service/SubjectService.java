@@ -61,4 +61,10 @@ public interface SubjectService {
 	 */
 	public PageInfo<Subject>  findSubjectByUserId(Integer userId, int page);
 	
+	/**
+	 * 找到所有申报课题
+	 * @return
+	 */
+	public Integer getAllSubject();
+	
 }

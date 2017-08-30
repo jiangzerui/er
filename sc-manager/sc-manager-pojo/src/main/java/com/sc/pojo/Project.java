@@ -17,6 +17,8 @@ public class Project {
 
     private Integer userId;
 
+    private String detail;
+
     public Integer getProjectId() {
         return projectId;
     }
@@ -79,5 +81,13 @@ public class Project {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail == null ? null : detail.trim();
     }
 }

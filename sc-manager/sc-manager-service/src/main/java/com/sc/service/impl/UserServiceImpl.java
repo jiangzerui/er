@@ -71,6 +71,12 @@ public class UserServiceImpl implements UserService {
 		return roles;
 	}
 
+	@Override
+	public Integer getUserCount() {
+		int userCount = (int) userMapper.countByExample(null);
+		return userCount;
+	}
+
 }
 
 

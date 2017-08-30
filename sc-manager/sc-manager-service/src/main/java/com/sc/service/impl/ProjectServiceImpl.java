@@ -47,13 +47,12 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public void saveProject(Project project, Guide guide, String orgs) {
+	public void saveProject(Project project, List<Guide> guides, String orgs) {
 		//添加guide指南信息
-		String guideCode = UniqueCodeGenerator.generate(20);
-		guide.setGuideCode(guideCode);
-		guideMapper.insert(guide);
+		for(Guide g : guides){
+			guideMapper.insert(g);
+		}
 		//添加project信息
-		project.setGuideCode(guideCode);
 		projectMapper.insert(project);
 		//关联组织信息
 		String[] orgIds = orgs.split(",");

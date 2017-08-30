@@ -23,6 +23,6 @@ public interface ProjectService {
 	/**
 	 * 发布项目
 	 */
-	public void saveProject(Project project, Guide guide, String orgs);
+	public void saveProject(Project project, List<Guide> guide, String orgs);
 	
 }

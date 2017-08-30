@@ -1,5 +1,7 @@
 package com.sc.service;
 
+import java.util.List;
+
 import com.sc.pojo.Guide;
 
 public interface GuideService {
@@ -10,5 +12,12 @@ public interface GuideService {
 	 * @return
 	 */
 	public Guide findByGuideCode(String guideCode);
+
+	/**
+	 * 通过项目code 查询所有指南
+	 * @param projectCode
+	 * @return
+	 */
+	public List<Guide> findByProjectCode(String projectCode);
 	
 }

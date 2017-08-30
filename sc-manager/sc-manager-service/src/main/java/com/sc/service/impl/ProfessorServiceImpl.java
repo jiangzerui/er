@@ -8,15 +8,20 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sc.mapper.ProfessorMapper;
+import com.sc.mapper.UserRoleMapper;
 import com.sc.pojo.Professor;
 import com.sc.pojo.ProfessorExample;
 import com.sc.pojo.ProfessorExample.Criteria;
+import com.sc.pojo.UserRoleExample;
 import com.sc.service.ProfessorService;
 
 @Service
 public class ProfessorServiceImpl implements ProfessorService {
 	@Autowired
 	private ProfessorMapper professorMapper;
+	
+	@Autowired 
+	private UserRoleMapper urm;
 	
 	@Override
 	public PageInfo<Professor> findByClassAndPage(String classCode, int page) {
@@ -31,6 +36,16 @@ public class ProfessorServiceImpl implements ProfessorService {
 		List<Professor> ps = professorMapper.selectByExample(example);
 		PageInfo<Professor> pageInfo = new PageInfo<Professor>(ps);
 		return pageInfo;
+	}
+
+	@Override
+	public Integer getProfessorCount() {
+		UserRoleExample example = new UserRoleExample();
+		com.sc.pojo.UserRoleExample.Criteria criteria = example.createCriteria();
+		//专家用户10004
+		criteria.andRoleCodeEqualTo("10004");
+		int professorCount = (int) urm.countByExample(example);
+		return professorCount;
 	}
 
 }

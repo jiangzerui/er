@@ -6,6 +6,7 @@
     <result column="guide_name" jdbcType="VARCHAR" property="guideName" />
     <result column="guide_url" jdbcType="VARCHAR" property="guideUrl" />
     <result column="guide_code" jdbcType="VARCHAR" property="guideCode" />
+    <result column="project_code" jdbcType="VARCHAR" property="projectCode" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    guide_id, guide_name, guide_url, guide_code
+    guide_id, guide_name, guide_url, guide_code, project_code
   </sql>
   <select id="selectByExample" parameterType="com.sc.pojo.GuideExample" resultMap="BaseResultMap">
     select
@@ -100,9 +101,9 @@
   </delete>
   <insert id="insert" parameterType="com.sc.pojo.Guide">
     insert into guide (guide_id, guide_name, guide_url, 
-      guide_code)
+      guide_code, project_code)
     values (#{guideId,jdbcType=INTEGER}, #{guideName,jdbcType=VARCHAR}, #{guideUrl,jdbcType=VARCHAR}, 
-      #{guideCode,jdbcType=VARCHAR})
+      #{guideCode,jdbcType=VARCHAR}, #{projectCode,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sc.pojo.Guide">
     insert into guide
@@ -119,6 +120,9 @@
       <if test="guideCode != null">
         guide_code,
       </if>
+      <if test="projectCode != null">
+        project_code,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="guideId != null">
@@ -132,6 +136,9 @@
       </if>
       <if test="guideCode != null">
         #{guideCode,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCode != null">
+        #{projectCode,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -156,6 +163,9 @@
       <if test="record.guideCode != null">
         guide_code = #{record.guideCode,jdbcType=VARCHAR},
       </if>
+      <if test="record.projectCode != null">
+        project_code = #{record.projectCode,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -166,7 +176,8 @@
     set guide_id = #{record.guideId,jdbcType=INTEGER},
       guide_name = #{record.guideName,jdbcType=VARCHAR},
       guide_url = #{record.guideUrl,jdbcType=VARCHAR},
-      guide_code = #{record.guideCode,jdbcType=VARCHAR}
+      guide_code = #{record.guideCode,jdbcType=VARCHAR},
+      project_code = #{record.projectCode,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -183,6 +194,9 @@
       <if test="guideCode != null">
         guide_code = #{guideCode,jdbcType=VARCHAR},
       </if>
+      <if test="projectCode != null">
+        project_code = #{projectCode,jdbcType=VARCHAR},
+      </if>
     </set>
     where guide_id = #{guideId,jdbcType=INTEGER}
   </update>
@@ -190,7 +204,8 @@
     update guide
     set guide_name = #{guideName,jdbcType=VARCHAR},
       guide_url = #{guideUrl,jdbcType=VARCHAR},
-      guide_code = #{guideCode,jdbcType=VARCHAR}
+      guide_code = #{guideCode,jdbcType=VARCHAR},
+      project_code = #{projectCode,jdbcType=VARCHAR}
     where guide_id = #{guideId,jdbcType=INTEGER}
   </update>
 </mapper>

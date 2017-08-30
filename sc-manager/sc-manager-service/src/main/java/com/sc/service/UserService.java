@@ -29,4 +29,6 @@ public interface UserService {
 	 */
 	List<Role> getUserRoleByLoginname(String loginname);
 	
+	Integer getUserCount();
+	
 }

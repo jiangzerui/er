@@ -81,8 +81,8 @@ public class FundController {
 		Project project = projectService.getProjectById(projectId);
 		model.addAttribute("project", project);
 		//通过项目查找关联的指南
-		Guide guide = guideService.findByGuideCode(project.getGuideCode());
-		model.addAttribute("guide", guide);
+		List<Guide> guides = guideService.findByProjectCode(project.getProjectCode());
+		model.addAttribute("guides", guides);
 		//通过项目查找关联的组织
 		List<Orgnaization> orgnaizations = orgnaizationService.findByProjectCode(project.getProjectCode());
 		model.addAttribute("orgnaizations", orgnaizations);

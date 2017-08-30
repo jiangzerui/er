@@ -9,6 +9,8 @@ public class Guide {
 
     private String guideCode;
 
+    private String projectCode;
+
     public Integer getGuideId() {
         return guideId;
     }
@@ -39,5 +41,13 @@ public class Guide {
 
     public void setGuideCode(String guideCode) {
         this.guideCode = guideCode == null ? null : guideCode.trim();
+    }
+
+    public String getProjectCode() {
+        return projectCode;
+    }
+
+    public void setProjectCode(String projectCode) {
+        this.projectCode = projectCode == null ? null : projectCode.trim();
     }
 }

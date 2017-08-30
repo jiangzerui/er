@@ -51,4 +51,11 @@ public class OrgnaizationServiceImpl implements OrgnaizationService {
 		return orgnaizationMapper.selectByPrimaryKey(orgId);
 	}
 
+	@Override
+	public Integer getAllOrgnaizations() {
+		// TODO Auto-generated method stub
+		int orgnaizations = (int) orgnaizationMapper.countByExample(null);
+		return orgnaizations;
+	}
+
 }

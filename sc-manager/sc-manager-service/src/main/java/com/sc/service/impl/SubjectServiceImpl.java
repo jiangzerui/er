@@ -144,6 +144,13 @@ public class SubjectServiceImpl implements SubjectService {
 		return pageInfo;
 	}
 
+	@Override
+	public Integer getAllSubject() {
+		// TODO Auto-generated method stub
+		int sc = (int) subjectMapper.countByExample(null);
+		return sc;
+	}
+
 }
 
 

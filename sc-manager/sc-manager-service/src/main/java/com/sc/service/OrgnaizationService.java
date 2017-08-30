@@ -24,4 +24,9 @@ public interface OrgnaizationService {
 	 * @return
 	 */
 	public Orgnaization findById(int orgId);
+	
+	/**
+	 * 找到所有的组织
+	 */
+	public Integer getAllOrgnaizations();
 }

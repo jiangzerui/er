@@ -90,7 +90,6 @@
             <h2>${project.projectName}</h2>
             <p>${project.description}</p><br/>
             	<p>
-              <button type="button" id="dlButton" class="btn btn-primary" onclick='location="${guide.guideUrl}"'>项目指南</button>
               <button type="button" id="applyButton" class="btn btn-success" onclick="applyBut()">项目申请</button>
             </p>
         </div>
@@ -120,6 +119,22 @@
     </form>
 </div>
 <c:if test="${project.projectType==1}">
+<!-- 项目指南列表 -->
+<div id="events" class="events">
+    <div class="container">
+        <!-- 详细介绍 -->
+        <h4>详细介绍</h4>
+        <div class="events-grids">${project.detail}</div>
+        <h4>项目指南</h4>
+        <c:forEach items="${guides}" var="guide" varStatus="status">
+	        <div class="events-grids">
+	        	附件${status.index+1}：<a href="${guide.guideUrl}">【${guide.guideName}】</a>
+	        </div>
+        </c:forEach>
+    </div>
+</div>
+
+<!-- 新闻中心 -->
 <div id="events" class="events">
     <div class="container">
         <h3>新闻中心</h3>
@@ -143,7 +158,7 @@
 </c:if>
 
 
-<!-- portfolio -->
+<!-- portfolio 
 <div id="portfolio" class="gallery">
     <div class="container">
         <h3>成果展现</h3>
@@ -185,6 +200,7 @@
         </div>
     </div>
 </div>
+-->
 <hr />
 <script type="text/javascript">
 $(function(){

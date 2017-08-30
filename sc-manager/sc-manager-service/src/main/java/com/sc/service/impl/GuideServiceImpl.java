@@ -28,4 +28,12 @@ public class GuideServiceImpl implements GuideService {
 		return null;
 	}
 
+	@Override
+	public List<Guide> findByProjectCode(String projectCode) {
+		GuideExample example = new GuideExample();
+		example.createCriteria().andProjectCodeEqualTo(projectCode);
+		List<Guide> guides = guideMapper.selectByExample(example);
+		return guides;
+	}
+
 }

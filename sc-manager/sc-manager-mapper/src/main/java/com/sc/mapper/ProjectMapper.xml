@@ -10,6 +10,7 @@
     <result column="guide_code" jdbcType="VARCHAR" property="guideCode" />
     <result column="project_logo_url" jdbcType="VARCHAR" property="projectLogoUrl" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="detail" jdbcType="VARCHAR" property="detail" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -71,7 +72,7 @@
   </sql>
   <sql id="Base_Column_List">
     project_id, project_name, project_code, description, project_type, guide_code, project_logo_url, 
-    user_id
+    user_id, detail
   </sql>
   <select id="selectByExample" parameterType="com.sc.pojo.ProjectExample" resultMap="BaseResultMap">
     select
@@ -106,10 +107,12 @@
   <insert id="insert" parameterType="com.sc.pojo.Project">
     insert into project (project_id, project_name, project_code, 
       description, project_type, guide_code, 
-      project_logo_url, user_id)
+      project_logo_url, user_id, detail
+      )
     values (#{projectId,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{projectCode,jdbcType=VARCHAR}, 
       #{description,jdbcType=VARCHAR}, #{projectType,jdbcType=INTEGER}, #{guideCode,jdbcType=VARCHAR}, 
-      #{projectLogoUrl,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER})
+      #{projectLogoUrl,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{detail,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.sc.pojo.Project">
     insert into project
@@ -138,6 +141,9 @@
       <if test="userId != null">
         user_id,
       </if>
+      <if test="detail != null">
+        detail,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="projectId != null">
@@ -163,6 +169,9 @@
       </if>
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="detail != null">
+        #{detail,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -199,6 +208,9 @@
       <if test="record.userId != null">
         user_id = #{record.userId,jdbcType=INTEGER},
       </if>
+      <if test="record.detail != null">
+        detail = #{record.detail,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -213,7 +225,8 @@
       project_type = #{record.projectType,jdbcType=INTEGER},
       guide_code = #{record.guideCode,jdbcType=VARCHAR},
       project_logo_url = #{record.projectLogoUrl,jdbcType=VARCHAR},
-      user_id = #{record.userId,jdbcType=INTEGER}
+      user_id = #{record.userId,jdbcType=INTEGER},
+      detail = #{record.detail,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -242,6 +255,9 @@
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
       </if>
+      <if test="detail != null">
+        detail = #{detail,jdbcType=VARCHAR},
+      </if>
     </set>
     where project_id = #{projectId,jdbcType=INTEGER}
   </update>
@@ -253,7 +269,8 @@
       project_type = #{projectType,jdbcType=INTEGER},
       guide_code = #{guideCode,jdbcType=VARCHAR},
       project_logo_url = #{projectLogoUrl,jdbcType=VARCHAR},
-      user_id = #{userId,jdbcType=INTEGER}
+      user_id = #{userId,jdbcType=INTEGER},
+      detail = #{detail,jdbcType=VARCHAR}
     where project_id = #{projectId,jdbcType=INTEGER}
   </update>
 </mapper>

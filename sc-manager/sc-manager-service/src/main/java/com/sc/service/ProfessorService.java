@@ -15,4 +15,6 @@ public interface ProfessorService {
 	 */
 	public PageInfo<Professor> findByClassAndPage(String classCode, int page);
 	
+	public Integer getProfessorCount();
+	
 }

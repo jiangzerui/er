@@ -86,7 +86,8 @@
 		   <div class="col-md-5 col-md-offset-4">
 		   		<div class="form-group"><label for="exampleInputName2">项目名称</label><input name="projectName" type="text" class="form-control"></div>
             		<div class="form-group"><label for="exampleInputName2">项目说明</label><textarea name="description" class="form-control" rows="6"></textarea></div>
-            		<div class="form-group"><label for="exampleInputFile">项目指南</label><input name="guideFile" type="file" id="guide"></div>
+            		<div class="form-group"><label for="exampleInputName2">详细介绍</label><textarea name="detail" class="form-control" rows="6"></textarea></div>
+            		<div class="form-group"><label for="exampleInputFile">项目指南 [<a href='javascript:;' id='appendGuideFileInput'>添加</a>]</label><input name="guideFile" type="file" id="guide"></div>
             		<div class="form-group"><label for="exampleInputFile">项目图片</label><input type="file" name="logoFile" id="picture"></div>
             		<div class="form-group"><label for="exampleInputFile">是否面向特定机构</label>
             			<label class="radio-inline">
@@ -128,6 +129,10 @@ $(function(){
     	}else{
     		$("#orgshow").hide();
     	}
+    });
+    
+    $("#appendGuideFileInput").click(function(){
+    	$(this).parent().parent().append('<input name="guideFile" type="file" id="guide">');
     });
 });
 </script>
